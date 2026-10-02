@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-forest-950: #032e1a;
+  --color-forest-900: #043d24;
+  --color-forest-800: #01723b;
+  --color-forest-700: #157a48;
+  --color-leaf-600: #157a48;
+  --color-leaf-500: #419368;
+  --color-mint-100: #e7f3ec;
+  --color-mint-200: #cfe7d9;
+  --color-sun-400: #f6b231;
+  --color-sun-500: #df9f0e;
+  --color-paper: #fffdf7;
+  --color-ink: #10231a;
+  --font-display: "Fraunces", "Noto Serif Devanagari", Georgia, serif;
+  --font-body: "Public Sans", "Noto Sans Devanagari", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Arch image mask — the memorable motif (community window / temple doorway) */
+.arch {
+  border-radius: 999px 999px 28px 28px;
+}
+.arch-sm {
+  border-radius: 160px 160px 20px 20px;
+}
+
+/* Terraced fields divider */
+.terrace {
+  background-image: repeating-radial-gradient(
+    circle at 50% 0,
+    transparent 0,
+    transparent 22px,
+    rgba(1, 114, 59, 0.12) 23px,
+    transparent 24px
+  );
+}
+
+/* Subtle paper grain */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(1, 114, 59, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+::selection {
+  background: #f6b231;
+  color: #032e1a;
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 3px solid #f6b231;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
