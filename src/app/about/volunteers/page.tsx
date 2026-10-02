@@ -6,6 +6,10 @@ import {
   FirstAid,
   ShieldCheck,
 } from "@phosphor-icons/react/dist/ssr";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
+
+export const metadata: Metadata = metaFor("/about/volunteers");
 
 const ROLES = [
   {

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { Heart, GraduationCap, Drop, Users } from "@phosphor-icons/react/dist/ssr";
@@ -28,6 +30,8 @@ const HIGHLIGHTS = [
     body: "Under the CILRP livelihood program, a rehabilitated drinking-water scheme in Panchakanya cut fetching time for mothers and children — one of 4 water and 16 irrigation schemes reviewed jointly.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/stories");
 
 export default function Page() {
   return (

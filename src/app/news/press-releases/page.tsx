@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { Megaphone, CalendarBlank } from "@phosphor-icons/react/dist/ssr";
@@ -15,6 +17,8 @@ const ONGOING = [
   "Child-club formation, training and municipality-level networking",
   "Community infrastructure and livelihood recovery with local governments",
 ];
+
+export const metadata: Metadata = metaFor("/news/press-releases");
 
 export default function Page() {
   return (

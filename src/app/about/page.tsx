@@ -1,5 +1,8 @@
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
+import { FaqJsonLd } from "@/components/json-ld";
+import { metaFor } from "@/lib/seo";
+import type { Metadata } from "next";
 import {
   OBJECTIVES,
   STRATEGIES,
@@ -21,6 +24,41 @@ import {
   Scales,
   Buildings,
 } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/about");
+
+const FAQS = [
+  {
+    question: "What is CSN Nepal?",
+    answer:
+      "Co-operation Society Nepal (CSN) is a non-governmental, non-profit, non-political and non-religious social development organisation established in 2013 in Nuwakot, Nepal. It works to empower the most vulnerable — children, women, youth and marginalised communities — through child protection, education, health, livelihood and disaster recovery programs.",
+  },
+  {
+    question: "Where does CSN Nepal work?",
+    answer:
+      "CSN is based in Nuwakot district with its head office in Bidur-4, Battar and a contact office in Budhanilkantha, Kathmandu. It also runs field offices in Dupcheshwor and Kakani rural municipalities, and its projects reach Rasuwa, Dhading, Tanahun, Syangja and Makawanpur districts.",
+  },
+  {
+    question: "How can I donate to CSN Nepal?",
+    answer:
+      "You can donate via bank transfer to Prime Bank Ltd. Balaju (A/C 00701000000089200110, Swift: PCBLNPKA) or Himalayan Bank Ltd. Battar (NPR 026-05185800012). CSN's donor charter pledges that every gift is applied to its intended purpose with full accountability and annual independent audit.",
+  },
+  {
+    question: "Can I sponsor a child's education through CSN?",
+    answer:
+      "Yes. CSN runs scholarship and sponsorship programs for vulnerable children in Nuwakot — covering school fees, uniforms, books and family livelihood support. Contact csnnepal@gmail.com or +977-0105610001 to start a sponsorship.",
+  },
+  {
+    question: "How is CSN Nepal governed?",
+    answer:
+      "CSN has an inclusive 7-member executive board (3 women, 4 men) elected by the General Assembly through democratic practice. The board is chaired by the chairperson, funds are held in commercial bank accounts, and accounts are audited annually by a Government of Nepal authorised auditor.",
+  },
+  {
+    question: "What are CSN Nepal's main program areas?",
+    answer:
+      "CSN's nine major areas of intervention are: child protection and education; income generation and entrepreneurship; WASH; public and reproductive health; infrastructure development; emergency response; disaster risk management and climate change; human rights, peace and democracy; and inclusive governance.",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -128,6 +166,22 @@ export default function AboutPage() {
             <p className="flex items-center gap-2 font-bold text-[#157a48]"><Users size={19} /> Human resources</p>
             <p className="mt-3 leading-relaxed text-[#043d24]/80">{HR_SUMMARY}</p>
           </Card>
+        </div>
+      </section>
+
+      <section className="max-w-4xl mx-auto px-4 py-14">
+        <SectionHeading
+          eyebrow="Frequently asked questions"
+          title="Quick answers about CSN Nepal"
+        />
+        <FaqJsonLd faqs={FAQS} />
+        <div className="mt-8 space-y-4">
+          {FAQS.map((f) => (
+            <Card key={f.question} className="p-6">
+              <h3 className="font-display font-semibold text-lg">{f.question}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-[#043d24]/75">{f.answer}</p>
+            </Card>
+          ))}
         </div>
       </section>
 

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { PROJECTS } from "@/lib/data";
@@ -22,6 +24,8 @@ function ProjectCard({ p }: { p: (typeof PROJECTS)[number] }) {
     </Card>
   );
 }
+
+export const metadata: Metadata = metaFor("/programs/projects");
 
 export default function Page() {
   return (

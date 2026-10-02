@@ -2,6 +2,10 @@ import { PageHero, DonateBand } from "@/components/site";
 import { Card } from "@/components/ui";
 import { ADVISORY_BOARD } from "@/lib/data";
 import { SealCheck } from "@phosphor-icons/react/dist/ssr";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
+
+export const metadata: Metadata = metaFor("/about/advisory-board");
 
 export default function Page() {
   return (

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { PROGRAM_AREAS, INTERVENTION_AREAS } from "@/lib/data";
@@ -31,6 +33,8 @@ const DETAILS: Record<string, string> = {
   women:
     "Women's education, entrepreneurship and skills training sit at the heart of trafficking prevention. CSN supports literacy, income-generation, gender sensitisation and anti-trafficking awareness so women earn, decide and lead — keeping girls in school and families together.",
 };
+
+export const metadata: Metadata = metaFor("/programs");
 
 export default function Page() {
   return (

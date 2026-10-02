@@ -2,6 +2,10 @@ import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { PARTNERS } from "@/lib/data";
 import { Handshake, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
+
+export const metadata: Metadata = metaFor("/about/partners");
 
 export default function Page() {
   return (

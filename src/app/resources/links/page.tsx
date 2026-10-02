@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card } from "@/components/ui";
 import { Link as LinkIcon, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/resources/links");
 
 const LINKS = [
   { name: "UNICEF", web: "https://www.unicef.org", desc: "United Nations Children's Fund — child rights worldwide." },

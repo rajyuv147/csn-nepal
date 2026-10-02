@@ -2,6 +2,10 @@ import { PageHero, DonateBand } from "@/components/site";
 import { Card } from "@/components/ui";
 import { GOVERNANCE } from "@/lib/data";
 import { TreeStructure } from "@phosphor-icons/react/dist/ssr";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
+
+export const metadata: Metadata = metaFor("/about/structure");
 
 const LEVELS = [
   { t: "General Assembly", d: "All members — the highest decision-making body." },

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { NEWS } from "@/lib/data";
@@ -41,6 +43,8 @@ const ACTIONS = [
     body: "CSN presented its child-participation practice at the CONSORTIUM Nepal annual general meeting — sharing how child clubs feed into local planning.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/news");
 
 export default function Page() {
   return (

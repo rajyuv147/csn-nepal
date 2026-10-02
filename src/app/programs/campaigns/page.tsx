@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { CalendarBlank, Megaphone } from "@phosphor-icons/react/dist/ssr";
@@ -19,6 +21,8 @@ const CAMPAIGNS = [
     body: "Post-earthquake rally in Bidur bringing communities, civil society and local authorities together to demand safe, child-friendly and timely reconstruction and recovery across Nuwakot.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/programs/campaigns");
 
 export default function Page() {
   return (

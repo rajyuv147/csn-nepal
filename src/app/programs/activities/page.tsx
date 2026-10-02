@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { CalendarBlank, Tag } from "@phosphor-icons/react/dist/ssr";
@@ -52,6 +54,8 @@ const ACTIVITIES = [
     body: "14-day adolescent life-skills training on health, safety, confidence and decision-making.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/programs/activities");
 
 export default function Page() {
   return (

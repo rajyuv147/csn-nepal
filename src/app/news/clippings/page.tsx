@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { NEWS } from "@/lib/data";
@@ -55,6 +57,8 @@ const CLIPPINGS = [
     body: "Winter-clothes distribution carried out with UNICEF support through the Women and Children Office (WCO) Nuwakot.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/news/clippings");
 
 export default function Page() {
   return (

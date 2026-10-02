@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { CalendarBlank } from "@phosphor-icons/react/dist/ssr";
@@ -44,6 +46,8 @@ const EVENTS = [
     body: "Orientation on the child-protection situation update for teachers and students at Kalika Secondary School, Gurje.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/programs/events");
 
 export default function Page() {
   return (

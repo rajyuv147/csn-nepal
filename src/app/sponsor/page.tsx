@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Label } from "@/components/ui";
 import { GraduationCap, CheckCircle } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/sponsor");
 
 const COVERS = [
   "School fees and admission costs",

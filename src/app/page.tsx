@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import {
   ArrowRight,
   Baby,
@@ -31,6 +33,8 @@ const ICONS: Record<string, React.ReactNode> = {
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200&auto=format&fit=crop";
+
+export const metadata: Metadata = metaFor("/");
 
 export default function Home() {
   return (

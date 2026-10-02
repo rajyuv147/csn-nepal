@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
+
+export const metadata: Metadata = metaFor("/gallery");
 
 type Group = { title: string; detail: string; from: number; to: number };
 

@@ -2,6 +2,10 @@ import { PageHero, DonateBand } from "@/components/site";
 import { Card } from "@/components/ui";
 import { STAFF } from "@/lib/data";
 import { IdentificationCard } from "@phosphor-icons/react/dist/ssr";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
+
+export const metadata: Metadata = metaFor("/about/staff");
 
 export default function Page() {
   return (

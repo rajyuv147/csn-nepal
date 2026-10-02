@@ -7,6 +7,10 @@ import {
   FORMER_BOARD,
 } from "@/lib/data";
 import { UserCircle, GraduationCap, Briefcase, Crown } from "@phosphor-icons/react/dist/ssr";
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
+
+export const metadata: Metadata = metaFor("/about/executive-board");
 
 export default function Page() {
   return (

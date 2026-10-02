@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Label } from "@/components/ui";
 import { CONTACT, FINANCE_SYSTEM } from "@/lib/data";
 import { Heart, DownloadSimple, ShieldCheck, Bank } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/donate");
 
 export default function Page() {
   return (

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Textarea, Label } from "@/components/ui";
 import { CONTACT } from "@/lib/data";
@@ -7,6 +9,8 @@ import {
   EnvelopeSimple,
   Package,
 } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/contact");
 
 export default function Page() {
   return (

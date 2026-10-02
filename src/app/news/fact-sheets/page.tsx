@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button } from "@/components/ui";
@@ -20,6 +22,8 @@ const SHEETS = [
     body: "The Government of Nepal's National Child Policy 2069 BS — the framework guiding child-friendly governance and services.",
   },
 ];
+
+export const metadata: Metadata = metaFor("/news/fact-sheets");
 
 export default function Page() {
   return (

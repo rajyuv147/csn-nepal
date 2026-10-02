@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { Briefcase, CalendarBlank } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/news/announcements");
 
 export default function Page() {
   return (

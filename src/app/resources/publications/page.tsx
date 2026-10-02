@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
+import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button } from "@/components/ui";
 import { FilePdf, DownloadSimple } from "@phosphor-icons/react/dist/ssr";
+
+export const metadata: Metadata = metaFor("/resources/publications");
 
 export default function Page() {
   return (
