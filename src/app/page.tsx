@@ -15,9 +15,14 @@ import {
   Megaphone,
   HandHeart,
   MapPin,
+  Package,
+  Drop,
+  Briefcase,
+  HeartHandshake,
 } from "@phosphor-icons/react/dist/ssr";
 import { Badge, Button, Card } from "@/components/ui";
 import { SectionHeading, DonateBand } from "@/components/site";
+import HeroSlider from "@/components/hero-slider";
 import { PROGRAM_AREAS, PROJECTS, NEWS, COVID_MESSAGES, CONTACT } from "@/lib/data";
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -39,73 +44,90 @@ export const metadata: Metadata = metaFor("/");
 export default function Home() {
   return (
     <>
-      {/* HERO — arch window motif, editorial left-aligned */}
-      <section className="relative overflow-hidden grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#e7f3ec] via-[#fffdf7] to-[#fdeecd]" />
-        <div className="relative max-w-7xl mx-auto px-4 pt-12 md:pt-20 pb-14 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
-          <div>
-            <Badge>
-              <span className="w-2 h-2 rounded-full bg-[#157a48]" />
-              Non-profit • Nuwakot, Nepal • Since 2013
-            </Badge>
-            <h1 className="font-display font-semibold text-[2.9rem] md:text-[4.2rem] leading-[1.02] mt-5">
-              Self-sustained villages where{" "}
-              <span className="relative inline-block">
-                every child
-                <svg viewBox="0 0 220 14" className="absolute -bottom-2 left-0 w-full" preserveAspectRatio="none">
-                  <path d="M4 10 C 60 2, 160 2, 216 8" stroke="#f6b231" strokeWidth="7" fill="none" strokeLinecap="round" />
-                </svg>
-              </span>{" "}
-              learns, and no one is left behind.
-            </h1>
-            <p className="mt-6 text-lg text-[#043d24]/70 leading-relaxed max-w-xl">
-              Co-operation Society Nepal (CSN) supports the most vulnerable — poorest of the poor,
-              children, youth and women — through child protection, education, health, livelihood
-              and disaster recovery across remote, semi-urban and urban Nepal.
+      <HeroSlider />
+
+      {/* BHOTEKOSHI FLOOD RESPONSE */}
+      <section className="bg-[#032e1a] text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+          <div className="max-w-3xl">
+            <p className="flex items-center gap-2 text-[13px] font-bold text-[#f6b231]">
+              <span className="w-8 h-[3px] rounded-full bg-[#f6b231] inline-block" /> Emergency Response
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="/about">
-                  Who we are <ArrowRight size={18} />
-                </Link>
-              </Button>
-              <Button asChild variant="sun" size="lg">
-                <Link href="/donate">Donate</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/programs/projects">See projects</Link>
-              </Button>
-            </div>
-            <div className="mt-10 grid grid-cols-3 max-w-lg divide-x divide-[#01723b]/15 border-y border-[#01723b]/15">
-              {[
-                ["2013", "Serving since"],
-                ["33,477", "Earthquake-affected children clothed"],
-                ["12+", "Partner institutions"],
-              ].map(([n, l]) => (
-                <div key={l} className="px-5 py-4">
-                  <p className="font-display font-bold text-2xl md:text-3xl text-[#01723b]">{n}</p>
-                  <p className="text-[13px] font-medium text-[#043d24]/60 mt-1">{l}</p>
-                </div>
-              ))}
-            </div>
+            <h2 className="font-display text-3xl md:text-5xl font-semibold mt-3 leading-tight">
+              Bhotekoshi Flood Response
+            </h2>
+            <p className="mt-3 text-white/70 text-lg">
+              CSN Response Update – Nuwakot &amp; Rasuwa
+            </p>
           </div>
-          <div className="relative">
-            <div className="arch overflow-hidden border-[6px] border-white shadow-2xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={HERO_IMG} alt="Children learning together in Nepal" className="w-full h-[480px] md:h-[560px] object-cover" />
-            </div>
-            <Card className="absolute -left-4 md:-left-10 bottom-8 p-5 max-w-[270px] !rounded-3xl">
-              <p className="flex items-center gap-2 text-[13px] font-bold text-[#157a48]">
-                <MapPin size={15} className="text-[#d19406]" /> Field note — Shivapuri
-              </p>
-              <p className="mt-2 text-[15px] leading-relaxed">
-                “Midas e-CLASS turned rote lessons into interactive learning at Janaki Secondary
-                School.”
-              </p>
-            </Card>
-            <div className="absolute -right-3 top-6 rounded-2xl bg-[#032e1a] text-white px-5 py-3.5 shadow-xl rotate-2">
-              <p className="font-display font-bold text-xl text-[#f6b231]">Regd. 401/81</p>
-              <p className="text-xs text-white/70">SWC Affiliation 37085</p>
+
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                icon: <Baby size={26} weight="duotone" />,
+                title: "Child Protection",
+                lines: ["15 CFS", "427 children/students supported"],
+              },
+              {
+                icon: <Package size={26} weight="duotone" />,
+                title: "Relief Assistance",
+                lines: ["55 Baby Kits", "125 Food Packages", "50 WASH Kits", "200 Dignity Kits"],
+              },
+              {
+                icon: <Users size={26} weight="duotone" />,
+                title: "Community Support",
+                lines: ["499 households", "2,155 people reached"],
+              },
+              {
+                icon: <Drop size={26} weight="duotone" />,
+                title: "WASH & Water Support",
+                lines: ["Water storage and WASH facilities established across affected communities", "5"],
+              },
+              {
+                icon: <Briefcase size={26} weight="duotone" />,
+                title: "Livelihood Support",
+                lines: ["50 people supported through Cash-for-Work"],
+              },
+              {
+                icon: <HeartHandshake size={26} weight="duotone" />,
+                title: "Volunteers",
+                lines: ["157 volunteers mobilized for relief, child protection, WASH, community support and other response activities"],
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-3xl bg-white/[.06] border border-white/10 p-6"
+              >
+                <span className="w-12 h-12 grid place-items-center rounded-2xl bg-white/10 text-[#f6b231]">
+                  {item.icon}
+                </span>
+                <h3 className="font-display font-semibold text-xl mt-4">{item.title}</h3>
+                <div className="mt-2 space-y-1">
+                  {item.lines.map((line) => (
+                    <p key={line} className="text-sm text-white/70 leading-relaxed">{line}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 rounded-3xl bg-white/[.06] border border-white/10 px-6 py-5">
+            <p className="text-[13px] font-bold text-[#f6b231] uppercase tracking-wider">
+              Response at a Glance
+            </p>
+            <div className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
+              {[
+                "15 CFS",
+                "427 Children/Students",
+                "499 Households",
+                "2,155 People Reached",
+                "WASH 5",
+                "157 Volunteers",
+              ].map((stat) => (
+                <span key={stat} className="font-display font-semibold text-lg text-white">
+                  {stat}
+                </span>
+              ))}
             </div>
           </div>
         </div>
