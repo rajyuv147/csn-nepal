@@ -39,7 +39,7 @@ const GROUPS: Group[] = [
     to: 38,
   },
   {
-    title: "Staff training & capacity building",
+    title: "Small Hotel and Lodge Management Training",
     detail: "Training sessions for CSN staff and volunteers on response protocols, child protection and community mobilization.",
     from: 39,
     to: 45,
