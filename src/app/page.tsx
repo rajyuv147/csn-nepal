@@ -18,7 +18,7 @@ import {
   Package,
   Drop,
   Briefcase,
-  HeartHandshake,
+  Handshake,
 } from "@phosphor-icons/react/dist/ssr";
 import { Badge, Button, Card } from "@/components/ui";
 import { SectionHeading, DonateBand } from "@/components/site";
@@ -89,7 +89,7 @@ export default function Home() {
                 lines: ["50 people supported through Cash-for-Work"],
               },
               {
-                icon: <HeartHandshake size={26} weight="duotone" />,
+                icon: <Handshake size={26} weight="duotone" />,
                 title: "Volunteers",
                 lines: ["157 volunteers mobilized for relief, child protection, WASH, community support and other response activities"],
               },

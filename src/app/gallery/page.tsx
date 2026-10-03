@@ -38,6 +38,12 @@ const GROUPS: Group[] = [
     from: 32,
     to: 38,
   },
+  {
+    title: "Staff training & capacity building",
+    detail: "Training sessions for CSN staff and volunteers on response protocols, child protection and community mobilization.",
+    from: 39,
+    to: 45,
+  },
 ];
 
 const src = (n: number) => `/gallery/photo-${String(n).padStart(2, "0")}.jpeg`;
@@ -54,7 +60,7 @@ export default function Page() {
         <div>
           <Badge>
             <span className="w-2 h-2 rounded-full bg-[#157a48]" />
-            38 photos • Bhotekoshi Flood Response Project (Aug – Dec 2026)
+            45 photos • Bhotekoshi Flood Response Project (Aug – Dec 2026)
           </Badge>
         </div>
         {GROUPS.map((g) => (

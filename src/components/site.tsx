@@ -11,9 +11,6 @@ import {
   X,
   CaretDown,
   FacebookLogo,
-  TwitterLogo,
-  LinkedinLogo,
-  YoutubeLogo,
   Heart,
   ArrowRight,
 } from "@phosphor-icons/react";
@@ -252,16 +249,15 @@ export function SiteFooter() {
             organisation. Change is possible — let&apos;s start from today.
           </p>
           <div className="flex gap-2 mt-5">
-            {[FacebookLogo, TwitterLogo, LinkedinLogo, YoutubeLogo].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="social link"
-                className="w-10 h-10 grid place-items-center rounded-full bg-white/10 hover:bg-[#f6b231] hover:text-[#032e1a] transition-colors"
-              >
-                <Icon size={19} />
-              </a>
-            ))}
+            <a
+              href="https://www.facebook.com/www.csnnepal.org.np/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="CSN Nepal on Facebook"
+              className="w-10 h-10 grid place-items-center rounded-full bg-white/10 hover:bg-[#f6b231] hover:text-[#032e1a] transition-colors"
+            >
+              <FacebookLogo size={19} />
+            </a>
           </div>
         </div>
         <div>

@@ -3,7 +3,7 @@ import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Label } from "@/components/ui";
 import { CONTACT, FINANCE_SYSTEM } from "@/lib/data";
-import { Heart, DownloadSimple, ShieldCheck, Bank } from "@phosphor-icons/react/dist/ssr";
+import { Heart, ShieldCheck, Bank } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = metaFor("/donate");
 
@@ -31,11 +31,7 @@ export default function Page() {
             <li>Gifts applied to their intended purposes.</li>
             <li>Accountable and transparent use of funds.</li>
           </ul>
-          <Button asChild variant="outline" size="sm" className="mt-6">
-            <a href="#" download>
-              <DownloadSimple size={16} /> Download donor charter
-            </a>
-          </Button>
+
         </Card>
 
         <Card className="p-8">
