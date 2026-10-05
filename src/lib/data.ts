@@ -140,7 +140,7 @@ export const HR_SUMMARY =
 export const PARTNERS = [
   { name: "UNDP Nepal", web: "https://np.undp.org" },
   { name: "CARITAS Nepal", web: "https://www.caritas.org.np" },
-  { name: "UN Nepal Tourism Board", web: "https://ntb.gov.np" },
+  { name: "Nepal Tourism Board", web: "https://ntb.gov.np" },
   { name: "Panchakanya Rural Municipality", web: "https://panchakanyamun.gov.np" },
   { name: "Government of Nepal", web: "https://nepal.gov.np" },
   { name: "UNICEF Nepal", web: "https://www.unicef.org/nepal" },
