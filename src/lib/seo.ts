@@ -103,6 +103,11 @@ export const META: Record<string, Meta> = {
     description:
       "Job vacancies, quotation calls and official notices from Co-operation Society Nepal — check current openings.",
   },
+  "/vacancies": {
+    title: "Vacancies — Current Job Openings | CSN Nepal",
+    description:
+      "Open positions at Co-operation Society Nepal: Barefoot Counsellor roles for the Bhotekoshi Flood Response in Rasuwa and Nuwakot. Apply by email.",
+  },
   "/stories": {
     title: "Success Stories From the Field | CSN Nepal",
     description:
@@ -145,8 +150,8 @@ export const META: Record<string, Meta> = {
   },
 };
 
-export function metaFor(path: string): Metadata {
-  const m = META[path] ?? META["/"];
+export function metaFor(path: string, override?: Meta): Metadata {
+  const m = override ?? META[path] ?? META["/"];
   const url = `${SITE_URL}${path === "/" ? "" : path}`;
   return {
     title: m.title,
