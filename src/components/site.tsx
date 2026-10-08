@@ -286,6 +286,7 @@ export function SiteFooter() {
               ["Donate", "/donate"],
               ["Sponsor", "/sponsor"],
               ["Volunteers", "/about/volunteers"],
+              ["Vacancies", "/vacancies"],
               ["Partners", "/about/partners"],
               ["Contact", "/contact"],
             ].map(([l, h]) => (

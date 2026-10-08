@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { metaFor } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
-import { Card, Badge } from "@/components/ui";
-import { Briefcase, CalendarBlank } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { Card, Badge, Button } from "@/components/ui";
+import { VACANCIES } from "@/lib/data";
+import { Briefcase, CalendarBlank, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = metaFor("/news/announcements");
 
@@ -15,6 +17,26 @@ export default function Page() {
         intro="Vacancies, quotation calls and public notices from Co-operation Society Nepal."
       />
       <section className="max-w-5xl mx-auto px-4 py-14 space-y-6">
+        {VACANCIES.length > 0 && (
+          <Card className="p-8 bg-[#e7f3ec]/60 flex flex-col sm:flex-row sm:items-center gap-5 justify-between">
+            <div>
+              <Badge className="bg-[#f6b231]/15 border-[#b97d00]/20 text-[#7a5200]">
+                <Briefcase size={15} /> Now hiring
+              </Badge>
+              <h2 className="font-display text-2xl font-semibold mt-3">
+                {VACANCIES.length} open {VACANCIES.length === 1 ? "vacancy" : "vacancies"}
+              </h2>
+              <p className="mt-1 text-[15px] text-[#043d24]/75">
+                {VACANCIES.map((v) => v.title).join(", ")}
+              </p>
+            </div>
+            <Button asChild>
+              <Link href="/vacancies">
+                View vacancies <ArrowRight size={17} />
+              </Link>
+            </Button>
+          </Card>
+        )}
         <Card className="p-8">
           <div className="flex flex-wrap items-center gap-2">
             <Badge>

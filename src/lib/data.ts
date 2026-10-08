@@ -53,6 +53,7 @@ export const NAV = [
       { label: "Press Releases", href: "/news/press-releases" },
       { label: "Fact Sheets", href: "/news/fact-sheets" },
       { label: "Announcements", href: "/news/announcements" },
+      { label: "Vacancies", href: "/vacancies" },
       { label: "Success Stories", href: "/stories" },
     ],
   },
@@ -504,3 +505,78 @@ export const COVID_MESSAGES = [
   "लकडाउनको बेला बालबालिकामाथि हुने सबै प्रकारका हिंसा तथा दुर्व्यवहारबाट संरक्षण गरौं — देखेमा स्थानीय निकाय / प्रहरीमा खबर गरौं।",
   "यदि सडकमा बालबालिका देख्नुभएमा तुरुन्त १०४ मा खबर गरौं।",
 ];
+
+export type Vacancy = {
+  slug: string;
+  title: string;
+  titleNe: string;
+  project: string;
+  positions: string;
+  location: string;
+  contract: string;
+  postedDate: string; // ISO date the notice went up on the site
+  deadline: string;
+  jobDescriptionUrl: string;
+  applyEmail: string;
+  summary: string;
+  intro: string;
+  responsibilities: string[];
+  qualifications: string[];
+  safeguarding: string[];
+  howToApply: string;
+  closingNote: string;
+  encouragement: string;
+};
+
+// Newest first — add new openings at the top of this list.
+export const VACANCIES: Vacancy[] = [
+  {
+    slug: "barefoot-counsellor",
+    title: "Barefoot Counsellor",
+    titleNe: "आधारभूत मनोसामाजिक सहयोगकर्ता",
+    project: "Bhotekoshi Flood Response — Caritas Nepal / CRS",
+    positions: "Several (केही)",
+    location: "Flood-affected areas of Rasuwa and Nuwakot",
+    contract: "October – November 2026",
+    postedDate: "2026-10-08",
+    deadline: "Rolling basis — open until filled",
+    jobDescriptionUrl:
+      "https://docs.google.com/document/d/1ke98Ap2rky2l448IlWWWAufi6tEnOHoA/edit?usp=drive_link&ouid=111865193634769481345&rtpof=true&sd=true",
+    applyEmail: "csnnepal@gmail.com",
+    summary:
+      "Provide basic psychosocial support and psychological first aid (PFA) to flood-affected families, identify protection risks and help people safely reach the services they need.",
+    intro:
+      "कारितास नेपाल (Caritas Nepal) को आयोजना तथा CRS को आर्थिक सहयोगमा रसुवा, नुवाकोट र धादिङ जिल्लामा सञ्चालन भइरहेको भोटेकोशी बाढी प्रतिकार्य (Bhotekoshi Flood Response) परियोजना अन्तर्गत बाढी प्रभावित समुदायमा मनोसामाजिक सहयोग, संरक्षण तथा सेवा पहुँच सहजीकरणका लागि स्थानीय परिचालनको प्रत्यक्ष कार्यान्वयनकर्ता संस्था सहकार्य समाज नेपाल (Cooperation Society Nepal – CSN) द्वारा योग्य तथा इच्छुक उम्मेदवारहरूबाट निरन्तर आवेदन (Rolling Basis) आह्वान गरिएको छ।",
+    responsibilities: [
+      "बाढी प्रभावित व्यक्ति तथा परिवारलाई आधारभूत मनोसामाजिक सहयोग तथा मनोवैज्ञानिक प्राथमिक उपचार (PFA) प्रदान गर्ने।",
+      "प्रभावित व्यक्तिहरूका समस्या तथा संरक्षणसम्बन्धी जोखिमहरू पहिचान गरी आवश्यक सेवामा सुरक्षित रूपमा प्रेषण (Referral) गर्न सहयोग गर्ने।",
+      "महिला, बालबालिका, ज्येष्ठ नागरिक, अपाङ्गता भएका व्यक्ति तथा सीमान्तकृत समुदायलाई आवश्यक सेवा तथा सूचनामा पहुँचका लागि सहजीकरण गर्ने।",
+      "समुदाय तथा होल्डिङ/ अस्थाई सेन्टरमा नियमित भेटघाट, छलफल तथा आवश्यक फलोअप गर्ने।",
+      "स्थानीय सरकार, सेवा प्रदायक तथा सम्बन्धित सरोकारवालासँग समन्वय गर्ने।",
+      "लाभग्राहीको गोपनीयता कायम गर्दै आवश्यक अभिलेख तथा प्रतिवेदन तयार गर्ने।",
+      "बाल संरक्षण, सुरक्षा, PSEA तथा संस्थाको आचारसंहिताको पूर्ण पालना गर्ने।",
+    ],
+    qualifications: [
+      "कुनै पनि विषयमा उच्च माध्यमिक शिक्षा (+२) वा सो सरह उत्तीर्ण।",
+      "समाजकार्य, मनोविज्ञान, परामर्श, शिक्षा, जनस्वास्थ्य, बाल विकास वा सम्बन्धित क्षेत्रमा तालिम/अनुभव भएकालाई प्राथमिकता।",
+      "मनोसामाजिक सहयोग, संरक्षण, समुदाय परिचालन वा मानवीय प्रतिकार्यमा अनुभव भएकालाई विशेष प्राथमिकता।",
+      "नेपाली तथा स्थानीय भाषामा राम्रोसँग सञ्चार गर्न सक्ने क्षमता।",
+      "संवेदनशील विषयमा गोपनीयता कायम राख्न सक्ने तथा समुदायसँग विश्वासपूर्वक काम गर्न सक्ने क्षमता।",
+    ],
+    safeguarding: [
+      "सहकार्य समाज नेपाल, कारितास नेपाल तथा CRS बालबालिका तथा लाभग्राहीहरूको संरक्षण र सुरक्षाका लागि पूर्ण रूपमा प्रतिबद्ध छन्। संस्थाले शोषण, दुर्व्यवहार, बेवास्ता तथा यौनजन्य दुर्व्यवहारविरुद्ध शून्य सहनशीलता (Zero Tolerance) को नीति अवलम्बन गरेको छ।",
+      "छनोट हुने उम्मेदवारले संस्थाको बाल संरक्षण नीति, सुरक्षा नीति, PSEA तथा आचारसंहिता (Code of Conduct) को अनिवार्य पालना गर्नुपर्नेछ। आवश्यकता अनुसार पृष्ठभूमि तथा सन्दर्भ जाँच (Background/Reference Check) समेत गरिनेछ।",
+    ],
+    howToApply:
+      "इच्छुक तथा योग्य उम्मेदवारहरूले आफ्नो बायोडाटा (CV) र आवेदन पत्र निम्न ठेगानामा यथाशीघ्र पठाउनुहुन अनुरोध गरिन्छ।",
+    closingNote:
+      "पदपूर्ति नभएसम्म यो विज्ञापन रोलिङ आधारमा (Rolling Basis) खुला रहनेछ। योग्य उम्मेदवारहरूको विवरण आवश्यकताअनुसार रोजगारीका लागि तयार गरिएको सूची (Roster) मा राखी आवश्यकता अनुसार सम्पर्क गरिनेछ।",
+    encouragement:
+      "महिला, स्थानीय बासिन्दा, अपाङ्गता भएका व्यक्ति तथा सीमान्तकृत समुदायका योग्य उम्मेदवारहरूलाई आवेदन दिन विशेष प्रोत्साहन गरिन्छ।",
+  },
+];
+
+export function applyMailto(v: Vacancy) {
+  const subject = `Application: ${v.title} (${v.titleNe})`;
+  return `mailto:${v.applyEmail}?subject=${encodeURIComponent(subject)}`;
+}
