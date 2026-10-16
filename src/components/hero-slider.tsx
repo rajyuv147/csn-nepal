@@ -7,6 +7,16 @@ import { Button } from "@/components/ui";
 
 const SLIDES = [
   {
+    image: "/gallery/WhatsApp%20Image%202026-10-16%20at%2012.05.15.jpeg",
+    alt: "Caritas team distributing kitchen and bedding supplies to families",
+    eyebrow: "Relief Distribution",
+    title: "Kitchen and bedding sets for 600 households",
+    description:
+      "Kitchen and bedding NFI sets are being provided to 600 households across Nuwakot and Rasuwa districts.",
+    primaryCta: { label: "Explore the gallery", href: "/gallery" },
+    secondaryCta: { label: "Support the response", href: "/donate" },
+  },
+  {
     image: "https://www.csnnepal.org.np/gallery/photo-17.jpeg",
     alt: "CSN flood response team in Bhotekoshi",
     eyebrow: "Emergency Response",
