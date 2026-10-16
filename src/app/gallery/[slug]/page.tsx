@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { GalleryPhotoGrid } from "@/components/gallery-photo-grid";
 import { DonateBand, PageHero } from "@/components/site";
 import { GALLERIES, galleryPhotoSrc, getGalleryBySlug } from "@/lib/gallery";
-import { metaFor } from "@/lib/seo";
+import { metaFor, SITE_URL } from "@/lib/seo";
 
 type GalleryPageProps = { params: Promise<{ slug: string }> };
 
@@ -19,8 +19,10 @@ export async function generateMetadata({ params }: GalleryPageProps): Promise<Me
   if (!gallery) return metaFor("/gallery");
 
   return metaFor(`/gallery/${gallery.slug}`, {
-    title: `${gallery.title} | Photo Gallery | CSN Nepal`,
+    title: `${gallery.title} | CSN`,
     description: gallery.detail,
+    image: `${SITE_URL}${galleryPhotoSrc(gallery.from)}`,
+    imageAlt: gallery.title,
   });
 }
 

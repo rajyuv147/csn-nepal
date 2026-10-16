@@ -3,6 +3,7 @@ export const CONTACT = {
   phoneTop: "+977-010561001 / +977-9851078685",
   phones: ["+977-9851078685", "+977-010561001", "+977-014371433", "+977-9841537115"],
   headOffice: "Bidur-4, Battar, Nuwakot, Nepal (Head Office), P.O. Box No. 9632",
+  headOfficeMap: "https://www.google.com/maps/search/?api=1&query=Bidur-4%2C%20Battar%2C%20Nuwakot%2C%20Nepal",
   branchOffice: "Budhanilkantha-6, Kathmandu (Contact Office) — 01-4371433",
   fieldOffices: [
     "Dupcheshwor Rural Municipality-6, Samundratar — 9851201624 / 9840095160",

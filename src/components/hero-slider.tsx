@@ -97,6 +97,8 @@ export default function HeroSlider() {
           {SLIDES.map((slide, i) => (
             <div
               key={slide.image}
+              aria-hidden={i !== active}
+              inert={i !== active}
               className={`transition-all duration-700 ${
                 i === active
                   ? "opacity-100 translate-y-0"
@@ -107,9 +109,15 @@ export default function HeroSlider() {
                 <span className="w-8 h-[3px] rounded-full bg-[#f6b231] inline-block" />
                 {slide.eyebrow}
               </p>
-              <h1 className="font-display font-semibold text-4xl md:text-6xl text-white leading-[1.05] mt-4">
-                {slide.title}
-              </h1>
+              {i === active ? (
+                <h1 className="font-display font-semibold text-4xl md:text-6xl text-white leading-[1.05] mt-4">
+                  {slide.title}
+                </h1>
+              ) : (
+                <h2 className="font-display font-semibold text-4xl md:text-6xl text-white leading-[1.05] mt-4">
+                  {slide.title}
+                </h2>
+              )}
               <p className="mt-5 text-lg text-white/80 leading-relaxed max-w-xl">
                 {slide.description}
               </p>

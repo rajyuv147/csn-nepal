@@ -1,4 +1,5 @@
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
+import { CONTACT } from "@/lib/data";
 
 const ngoSchema = {
   "@context": "https://schema.org",
@@ -7,22 +8,40 @@ const ngoSchema = {
   name: SITE_NAME,
   alternateName: ["CSN Nepal", "सहकार्य समाज नेपाल"],
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+  },
   image: `${SITE_URL}/og-image.png`,
   description:
     "Non-governmental, non-profit social development organisation (est. 2013, Nuwakot) working in child protection, education, health, livelihood, disaster response and community empowerment.",
   foundingDate: "2013",
-  nonprofitStatus: "NonprofitType",
-  email: "info@csnnepal.org.np",
-  telephone: "+977-010561001",
+  email: CONTACT.email[0],
+  telephone: CONTACT.phones[0],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "general inquiries",
+    email: CONTACT.email[0],
+    telephone: CONTACT.phones[0],
+    availableLanguage: ["English", "Nepali"],
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Bidur-4, Battar",
-    addressLocality: "Nuwakot",
-    postalCode: "9632",
+    addressLocality: "Bidur",
+    addressRegion: "Nuwakot District",
     addressCountry: "NP",
   },
-  areaServed: ["Nuwakot", "Rasuwa", "Dhading", "Kathmandu"],
+  hasMap: CONTACT.headOfficeMap,
+  areaServed: [
+    "Nuwakot District, Nepal",
+    "Rasuwa District, Nepal",
+    "Dhading District, Nepal",
+    "Kathmandu, Nepal",
+    "Tanahun District, Nepal",
+    "Syangja District, Nepal",
+    "Makawanpur District, Nepal",
+  ],
   knowsAbout: [
     "Child protection",
     "Education",
@@ -32,8 +51,8 @@ const ngoSchema = {
     "Water sanitation and hygiene",
   ],
   sameAs: [
-    "https://www.facebook.com/CSN-479905355534275/",
-    "https://twitter.com/CSNNepal",
+    "https://www.facebook.com/www.csnnepal.org.np/",
+    "https://x.com/CSNNepal",
   ],
 };
 

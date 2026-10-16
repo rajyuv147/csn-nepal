@@ -46,7 +46,7 @@ const FAQS = [
   {
     question: "Can I sponsor a child's education through CSN?",
     answer:
-      "Yes. CSN runs scholarship and sponsorship programs for vulnerable children in Nuwakot — covering school fees, uniforms, books and family livelihood support. Contact csnnepal@gmail.com or +977-0105610001 to start a sponsorship.",
+      `Yes. CSN runs scholarship and sponsorship programs for vulnerable children in Nuwakot — covering school fees, uniforms, books and family livelihood support. Contact ${CONTACT.email[0]} or ${CONTACT.phones[1]} to start a sponsorship.`,
   },
   {
     question: "How is CSN Nepal governed?",

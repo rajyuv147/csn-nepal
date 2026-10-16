@@ -122,8 +122,16 @@ export default function Page() {
               <h3 className="font-display text-2xl font-semibold mt-1">Bidur, Nuwakot, Nepal</h3>
               <p className="text-white/60 text-sm mt-2 max-w-sm">
                 Head office at Bidur-4, Battar — with a contact office at Budhanilkantha-6,
-                Kathmandu (01-4371433). Interactive map coming soon.
+                Kathmandu (01-4371433).
               </p>
+              <a
+                href={CONTACT.headOfficeMap}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block text-sm font-semibold text-[#f6b231] underline underline-offset-4 hover:text-white"
+              >
+                Find the head office in Google Maps
+              </a>
             </div>
           </div>
         </div>
