@@ -141,7 +141,7 @@ export const META: Record<string, Meta> = {
   "/gallery": {
     title: "Photo Gallery — Flood Response 2026 | CSN Nepal",
     description:
-      "38 field photos: Bhotekoshi flood assessment, volunteer orientation, relief, shelters and child-friendly spaces by CSN Nepal.",
+      "Field photos: Bhotekoshi flood assessment, volunteer orientation, CARITAS relief distribution, shelters and child-friendly spaces by CSN Nepal.",
   },
   "/contact": {
     title: "Contact Us — Bidur, Kathmandu & Field Offices | CSN",
