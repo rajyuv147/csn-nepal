@@ -44,7 +44,16 @@ const GROUPS: Group[] = [
     from: 39,
     to: 45,
   },
+  {
+    title: "Relief materials with support of CARITAS Nepal",
+    detail:
+      "Blankets, quilts, mattresses, LPG gas cylinders and relief boxes distributed to flood-affected families in Bidur, Nuwakot by CSN volunteers with CARITAS Nepal.",
+    from: 46,
+    to: 59,
+  },
 ];
+
+const PHOTO_COUNT = GROUPS.reduce((n, g) => n + g.to - g.from + 1, 0);
 
 const src = (n: number) => `/gallery/photo-${String(n).padStart(2, "0")}.jpeg`;
 
@@ -54,13 +63,13 @@ export default function Page() {
       <PageHero
         kicker="Media • Bhotekoshi Flood Response 2026"
         title="Gallery"
-        intro="Field moments from the Bhotekoshi Flood Response Project with CARITAS Nepal — assessment, orientation, relief, shelters and child-friendly spaces across Nuwakot and Rasuwa."
+        intro="Field moments from the Bhotekoshi Flood Response Project with CARITAS Nepal — assessment, orientation, relief distribution, shelters and child-friendly spaces across Nuwakot and Rasuwa."
       />
       <section className="max-w-6xl mx-auto px-4 py-14 space-y-14">
         <div>
           <Badge>
             <span className="w-2 h-2 rounded-full bg-[#157a48]" />
-            45 photos • Bhotekoshi Flood Response Project (Aug – Dec 2026)
+            {PHOTO_COUNT} photos • Bhotekoshi Flood Response Project (Aug – Dec 2026)
           </Badge>
         </div>
         {GROUPS.map((g) => (
