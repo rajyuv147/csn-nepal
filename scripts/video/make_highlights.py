@@ -482,12 +482,12 @@ GROUPS = [
      "Small Hotel and Lodge Management Training for local entrepreneurs.", [39, 44]),
 ]
 
-segments = []  # (duration, render_fn(t, dur) -> RGB image, caption_group or None)
+segments = []  # (duration, render_fn(t, dur) -> RGB image, caption_group or None, narration key)
 
-segments.append((5.0, card_intro, None))
+segments.append((5.0, card_intro, None, "intro"))
 segments.append((3.6, card_title("Bhotekoshi Flood Response · 2026", "When the river rose, CSN responded",
                                  "Relief, shelter, child protection, WASH and volunteer mobilisation across "
-                                 "Nuwakot and Rasuwa.", photo=14), None))
+                                 "Nuwakot and Rasuwa.", photo=14), None, "flood-title"))
 
 shot_index = 0
 for gi, (chapter, title, sub, photos) in enumerate(GROUPS):
@@ -498,7 +498,7 @@ for gi, (chapter, title, sub, photos) in enumerate(GROUPS):
         def make(n=n, motion=motion):
             return lambda t, dur: render_photo(n, t / dur, motion)
 
-        segments.append((SHOT, make(), gi))
+        segments.append((SHOT, make(), gi, f"g{gi}"))
 
 segments.append((6.5, card_stats("CSN response at a glance", "Bhotekoshi Flood Response", [
     (2155, "", "people reached"),
@@ -507,7 +507,7 @@ segments.append((6.5, card_stats("CSN response at a glance", "Bhotekoshi Flood R
     (15, "", "child-friendly spaces"),
     (157, "", "volunteers mobilised"),
     (50, "", "people in cash-for-work"),
-]), None))
+]), None, "stats"))
 segments.append((5.5, card_stats("Relief assistance", "Essential kits delivered", [
     (200, "", "dignity kits"),
     (125, "", "food packages"),
@@ -515,10 +515,10 @@ segments.append((5.5, card_stats("Relief assistance", "Essential kits delivered"
     (50, "", "WASH kits"),
     (5, "", "water storage & WASH facilities"),
     (600, "", "households with kitchen & bedding sets"),
-], note="With support from CARITAS Nepal and CRS"), None))
+], note="With support from CARITAS Nepal and CRS"), None, "kits"))
 segments.append((3.6, card_title("Beyond the flood", "Serving communities since 2013",
                                  "Patient, community-rooted work for children, families and youth.",
-                                 photo=34), None))
+                                 photo=34), None, "beyond"))
 segments.append((7.0, card_chips("What we do", "Overall support to the community", [
     "Education & scholarships", "Child protection", "Health, water & sanitation",
     "Livelihood & employment", "Disaster risk reduction", "Agriculture & environment",
@@ -526,27 +526,65 @@ segments.append((7.0, card_chips("What we do", "Overall support to the community
 ], [
     "Nuwakot · Rasuwa · Dhading · Kathmandu — and project reach in Tanahun, Syangja and Makawanpur",
     "Scholarships since 2013 · 180 young leaders trained · 100+ jobs on the Gosaikunda trail",
-]), None))
+]), None, "chips"))
 segments.append((5.0, card_chips("Together with", "Our partners", [
     "CARITAS Nepal", "CRS", "UNDP Nepal", "UNICEF Nepal", "Nepal Tourism Board",
     "Habitat for Humanity Nepal", "APC Nepal / France", "SCAI Australia", "Local governments",
 ], [
     "Working hand in hand with communities, local governments and networks.",
-]), None))
-segments.append((6.5, card_outro, None))
+]), None, "partners"))
+segments.append((7.5, card_outro, None, "outro"))
+
+
+# ---------------------------------------------------------------- narration timing
+
+NARRATION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "narration")
+VOICE_LEAD = 0.5   # seconds after a section starts before the voice comes in
+VOICE_GAP = 0.4    # minimum breath before the next section's cross-dissolve
+
+
+def narration_path(key):
+    return os.path.join(NARRATION_DIR, f"{key}.wav")
+
+
+def narration_seconds(key):
+    path = narration_path(key)
+    if not os.path.exists(path):
+        return 0.0
+    with wave.open(path) as w:
+        return w.getnframes() / w.getframerate()
+
+
+def fit_to_narration():
+    """Stretch sections whose voice-over is longer than their on-screen time."""
+    by_key = {}
+    for i, seg in enumerate(segments):
+        by_key.setdefault(seg[3], []).append(i)
+    for key, idx in by_key.items():
+        need = narration_seconds(key) + VOICE_LEAD + XFADE + VOICE_GAP
+        span = sum(segments[i][0] for i in idx) - (len(idx) - 1) * XFADE
+        if need > span:
+            extra = (need - span) / len(idx)
+            for i in idx:
+                dur, fn, g, k = segments[i]
+                segments[i] = (dur + extra, fn, g, k)
+
+
+fit_to_narration()
 
 
 def build_timeline():
-    """Return list of (start, duration, render, group) with XFADE overlaps."""
-    out, t = [], 0.0
-    for dur, fn, g in segments:
+    """Return list of (start, duration, render, group) with XFADE overlaps, plus voice cue times."""
+    out, cues, t = [], {}, 0.0
+    for dur, fn, g, key in segments:
         out.append((t, dur, fn, g))
+        cues.setdefault(key, t + VOICE_LEAD)
         t += dur - XFADE
     total = t + XFADE
-    return out, total
+    return out, total, cues
 
 
-TIMELINE, TOTAL = build_timeline()
+TIMELINE, TOTAL, VOICE_CUES = build_timeline()
 
 # Group visibility windows for persistent captions.
 GROUP_WINDOWS = {}
@@ -599,8 +637,12 @@ def frame_at(t):
 
 # ---------------------------------------------------------------- music
 
-def synth_music(path, seconds, sr=44100):
-    """Original, gentle piano-and-pad bed (no third-party audio)."""
+SR = 44100
+LOUDNORM = "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100"  # web/social loudness target
+
+
+def synth_music(seconds, sr=SR):
+    """Original, gentle piano-and-pad bed (no third-party audio). Returns (n, 2) floats."""
     n = int(seconds * sr)
     t = np.arange(n) / sr
     out = np.zeros(n)
@@ -656,7 +698,44 @@ def synth_music(path, seconds, sr=44100):
     fade_out = np.minimum(1, (seconds - t) / 3.0).clip(0, 1)
     stereo *= (fade_in * fade_out)[:, None]
     stereo /= max(1e-6, np.abs(stereo).max()) / 0.6
-    pcm = (stereo * 32767).astype(np.int16)
+    return stereo
+
+
+def load_voice(path, sr=SR):
+    """Decode a narration clip to mono floats at `sr` (ffmpeg does the resampling)."""
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"],
+        check=True, capture_output=True,
+    ).stdout
+    return np.frombuffer(raw, dtype=np.int16).astype(np.float64) / 32768
+
+
+def mix_soundtrack(path, seconds, sr=SR):
+    """Music bed with the voice-over on top; the music ducks while someone is speaking."""
+    music = synth_music(seconds, sr)
+    n = len(music)
+    voice = np.zeros(n)
+    speaking = np.zeros(n)
+    for key, start in VOICE_CUES.items():
+        clip_path = narration_path(key)
+        if not os.path.exists(clip_path):
+            continue
+        clip = load_voice(clip_path, sr)
+        a = int(start * sr)
+        b = min(n, a + len(clip))
+        voice[a:b] += clip[: b - a]
+        speaking[a:b] = 1
+    if speaking.any():
+        # smooth the on/off mask into ~0.35 s ramps, then duck the music to 35%
+        k = int(0.35 * sr)
+        kernel = np.ones(k) / k
+        speaking = np.clip(np.convolve(speaking, kernel, mode="same") * 1.6, 0, 1)
+        # music sits well under the voice, and ducks a further ~10 dB while someone speaks
+        music = 0.5 * music * (1 - 0.7 * speaking)[:, None]
+        voice *= 0.85 / max(1e-6, np.abs(voice).max())
+    mix = music + voice[:, None]
+    mix /= max(1.0, np.abs(mix).max() / 0.95)
+    pcm = (mix * 32767).astype(np.int16)
     with wave.open(path, "wb") as w:
         w.setnchannels(2)
         w.setsampwidth(2)
@@ -670,13 +749,13 @@ def main():
     print(f"Rendering {nframes} frames ({TOTAL:.1f}s) -> {OUT}", flush=True)
     with tempfile.TemporaryDirectory() as tmp:
         audio = os.path.join(tmp, "music.wav")
-        synth_music(audio, TOTAL)
+        mix_soundtrack(audio, TOTAL)
         cmd = [
             "ffmpeg", "-y", "-loglevel", "error",
             "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
             "-i", audio,
             "-c:v", "libx264", "-preset", "slow", "-crf", "24", "-pix_fmt", "yuv420p",
-            "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart",
+            "-af", LOUDNORM, "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart",
             OUT,
         ]
         proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
@@ -687,6 +766,10 @@ def main():
         proc.stdin.close()
         if proc.wait() != 0:
             sys.exit("ffmpeg failed")
+        # the soundtrack on its own (voice-over + music), for radio / social posts
+        audio_out = os.path.splitext(OUT)[0] + "-audio.m4a"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", audio, "-af", LOUDNORM,
+                        "-c:a", "aac", "-b:a", "160k", audio_out], check=True)
     print("Done.")
 
 
