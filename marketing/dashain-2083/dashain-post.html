@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CSN Dashain Greeting 2083</title>
+<style>
+  @font-face { font-family: "Kaushan Script"; src: url(fonts/kaushan-script-latin-400-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Poppins"; font-weight: 400; src: url(fonts/poppins-latin-400-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Poppins"; font-weight: 500; src: url(fonts/poppins-latin-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Poppins"; font-weight: 600; src: url(fonts/poppins-latin-600-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Poppins"; font-weight: 700; src: url(fonts/poppins-latin-700-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Mukta"; font-weight: 500; src: url(fonts/mukta-devanagari-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Mukta"; font-weight: 600; src: url(fonts/mukta-devanagari-600-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Mukta"; font-weight: 700; src: url(fonts/mukta-devanagari-700-normal.woff2) format("woff2"); }
+
+  :root {
+    --green: #0b5a33;
+    --green-2: #157a48;
+    --red: #c4161c;
+    --gold: #f6b231;
+    --ink: #1c2a22;
+  }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  #post {
+    position: relative; width: 1080px; height: 1080px; overflow: hidden;
+    font-family: "Poppins", sans-serif; color: var(--ink);
+  }
+  #scene { position: absolute; inset: 0; }
+
+  .copy { position: absolute; left: 78px; top: 118px; width: 600px; }
+  .happy {
+    font-weight: 700; font-size: 50px; letter-spacing: 16px; color: var(--green); line-height: 1;
+  }
+  .dashain {
+    position: relative; font-family: "Kaushan Script", cursive; font-size: 178px; line-height: 1;
+    color: var(--green); margin: 4px 0 0 -6px; text-shadow: 0 3px 0 rgba(255,255,255,.6);
+  }
+  .rule { width: 540px; height: 3px; background: linear-gradient(90deg, var(--green), rgba(11,90,51,.15)); margin-top: 26px; }
+  .nepali {
+    font-family: "Mukta", sans-serif; font-weight: 700; font-size: 32px; color: var(--red);
+    margin-top: 16px; line-height: 1.25; white-space: nowrap;
+  }
+  .message { font-size: 25px; line-height: 1.5; margin-top: 16px; width: 560px; color: #1f2b24; }
+  .together { font-size: 22.5px; font-weight: 500; line-height: 1.5; margin-top: 18px; width: 470px; color: var(--green-2); }
+
+  .footer {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 104px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 44px 0 48px;
+    background: rgba(255,255,255,.96); box-sizing: border-box;
+  }
+  .footer::before {
+    content: ""; position: absolute; left: 0; right: 0; top: -6px; height: 6px;
+    background: linear-gradient(90deg, var(--red) 0 33.3%, var(--gold) 33.3% 66.6%, var(--green-2) 66.6% 100%);
+  }
+  .url { display: flex; align-items: center; gap: 14px; font-weight: 600; font-size: 27px; color: var(--green); }
+  .url svg { width: 40px; height: 40px; }
+  .logo { height: 62px; display: block; }
+</style>
+</head>
+<body>
+<div id="post">
+<svg id="scene" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fbde9"/>
+      <stop offset=".34" stop-color="#c3e2f5"/>
+      <stop offset=".58" stop-color="#fbeedb"/>
+      <stop offset=".72" stop-color="#ffd9a1"/>
+      <stop offset="1" stop-color="#ffcf8a"/>
+    </linearGradient>
+    <radialGradient id="haze" cx="300" cy="420" r="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sunGlow" cx="905" cy="640" r="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffdf2" stop-opacity="1"/>
+      <stop offset=".12" stop-color="#fff3cf" stop-opacity=".95"/>
+      <stop offset=".4" stop-color="#ffd27a" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#ffc66b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="snow" x1="0" y1="540" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".38" stop-color="#e3ecf5"/>
+      <stop offset="1" stop-color="#9db3cc"/>
+    </linearGradient>
+    <linearGradient id="hazeBand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe4bd" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffe4bd" stop-opacity=".75"/>
+    </linearGradient>
+    <linearGradient id="hillGreen" x1="0" y1="850" x2="0" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#77a35d"/>
+      <stop offset="1" stop-color="#2f5e30"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbe08f"/>
+      <stop offset=".45" stop-color="#d9a43c"/>
+      <stop offset="1" stop-color="#8f6418"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b98d63"/>
+      <stop offset="1" stop-color="#6e4e33"/>
+    </linearGradient>
+    <radialGradient id="tika" cx=".45" cy=".35" r=".7">
+      <stop offset="0" stop-color="#f0313a"/>
+      <stop offset="1" stop-color="#a50d16"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="softer" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#3b2208" flood-opacity=".35"/>
+    </filter>
+
+    <!-- Pagoda temple; origin at bottom centre -->
+    <symbol id="pagoda" viewBox="-70 -170 140 172" overflow="visible">
+      <rect x="-58" y="-14" width="116" height="14" fill="#9a4b2b"/>
+      <rect x="-48" y="-26" width="96" height="12" fill="#b25d36"/>
+      <rect x="-32" y="-64" width="64" height="38" fill="#7b3b21"/>
+      <rect x="-20" y="-58" width="10" height="30" fill="#4a2312"/>
+      <rect x="-5" y="-58" width="10" height="30" fill="#4a2312"/>
+      <rect x="10" y="-58" width="10" height="30" fill="#4a2312"/>
+      <path d="M-66,-60 Q-40,-66 -34,-80 L34,-80 Q40,-66 66,-60 Z" fill="#4b2413"/>
+      <path d="M-66,-60 Q-40,-66 -34,-80 L-26,-80 Q-36,-66 -56,-60 Z" fill="#6a3620"/>
+      <rect x="-23" y="-98" width="46" height="18" fill="#7b3b21"/>
+      <path d="M-50,-95 Q-30,-100 -26,-113 L26,-113 Q30,-100 50,-95 Z" fill="#4b2413"/>
+      <path d="M-50,-95 Q-30,-100 -26,-113 L-19,-113 Q-26,-100 -41,-95 Z" fill="#6a3620"/>
+      <rect x="-15" y="-127" width="30" height="14" fill="#7b3b21"/>
+      <path d="M-36,-124 Q-20,-128 -15,-141 L15,-141 Q20,-128 36,-124 Z" fill="#4b2413"/>
+      <path d="M-4,-141 L4,-141 L2,-156 L0,-166 L-2,-156 Z" fill="#e2b13c"/>
+      <circle cx="0" cy="-150" r="4" fill="#f0c95a"/>
+    </symbol>
+  </defs>
+
+  <!-- sky, sun, clouds -->
+  <rect width="1080" height="1080" fill="url(#sky)"/>
+  <circle cx="905" cy="640" r="330" fill="url(#sunGlow)"/>
+  <circle cx="905" cy="640" r="34" fill="#fffef6"/>
+  <g filter="url(#soft)" fill="#ffffff" opacity=".75">
+    <ellipse cx="760" cy="120" rx="140" ry="26"/>
+    <ellipse cx="860" cy="150" rx="110" ry="20"/>
+    <ellipse cx="640" cy="470" rx="160" ry="22"/>
+    <ellipse cx="960" cy="380" rx="120" ry="18"/>
+  </g>
+
+  <!-- Himalaya range -->
+  <path d="M330,775 L405,728 L452,716 L498,700 L540,708 L585,682 L626,668 L668,630 L700,612 L736,580 L760,560 L782,540 L802,558 L824,574 L852,598 L882,610 L912,638 L952,650 L992,672 L1032,664 L1080,688 L1080,800 L330,800 Z" fill="url(#snow)"/>
+  <g fill="#8fa8c5" opacity=".75">
+    <path d="M782,540 L802,558 L824,574 L852,598 L842,628 L818,640 L808,606 L790,582 Z"/>
+    <path d="M668,630 L700,612 L712,640 L694,668 L680,650 Z"/>
+    <path d="M912,638 L952,650 L992,672 L970,700 L944,684 L928,666 Z"/>
+    <path d="M585,682 L626,668 L618,700 L600,712 Z"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2" fill="none" opacity=".8">
+    <path d="M782,540 L770,580 L752,612"/>
+    <path d="M736,580 L728,616"/>
+    <path d="M852,598 L866,640"/>
+  </g>
+  <rect x="300" y="690" width="780" height="120" fill="url(#hazeBand)"/>
+
+  <!-- layered hills -->
+  <path d="M260,812 C380,770 520,786 640,774 C760,760 880,780 1080,758 L1080,880 L260,880 Z" fill="#9db1c8"/>
+  <path d="M0,846 C160,806 300,826 460,816 C640,802 820,834 1080,806 L1080,920 L0,920 Z" fill="#7f9d97"/>
+  <path d="M0,890 C200,858 380,878 560,866 C760,852 900,878 1080,862 L1080,1000 L0,1000 Z" fill="url(#hillGreen)"/>
+
+  <!-- town & temples (houses placed by script) -->
+  <g id="town"></g>
+  <use href="#pagoda" x="-70" y="-170" width="140" height="172" transform="translate(470 912) scale(.62)"/>
+  <use href="#pagoda" x="-70" y="-170" width="140" height="172" transform="translate(560 916) scale(.9)"/>
+  <use href="#pagoda" x="-70" y="-170" width="140" height="172" transform="translate(668 912) scale(1.22)"/>
+  <use href="#pagoda" x="-70" y="-170" width="140" height="172" transform="translate(782 918) scale(.88)"/>
+  <use href="#pagoda" x="-70" y="-170" width="140" height="172" transform="translate(860 924) scale(.56)"/>
+  <g id="bushes"></g>
+
+  <!-- kites (drawn by script) -->
+  <g id="kites"></g>
+
+  <!-- linge ping: bamboo swing -->
+  <g id="ping">
+    <g stroke-linecap="round">
+      <line x1="878" y1="1010" x2="992" y2="300" stroke="#b88d4f" stroke-width="12"/>
+      <line x1="1082" y1="1000" x2="966" y2="300" stroke="#a87e45" stroke-width="12"/>
+      <line x1="878" y1="1010" x2="992" y2="300" stroke="#e2c27f" stroke-width="4" transform="translate(-3 0)"/>
+      <line x1="1082" y1="1000" x2="966" y2="300" stroke="#d6b26b" stroke-width="4" transform="translate(-3 0)"/>
+    </g>
+    <g id="bambooNodes" fill="#7d5a2c"></g>
+    <circle cx="979" cy="338" r="9" fill="#8a2a1e"/>
+    <path d="M972,332 L962,318 M986,332 L998,318" stroke="#8a2a1e" stroke-width="4" stroke-linecap="round"/>
+    <g transform="rotate(19 979 338)">
+      <line x1="972" y1="340" x2="958" y2="770" stroke="#6b4a2a" stroke-width="3"/>
+      <line x1="986" y1="340" x2="1000" y2="770" stroke="#6b4a2a" stroke-width="3"/>
+      <rect x="950" y="766" width="58" height="9" rx="3" fill="#7d4f26"/>
+      <!-- child silhouette on the seat (backlit) -->
+      <g transform="translate(979 766)">
+        <path d="M-8,-12 C-28,-8 -50,4 -66,14 L-62,20 C-46,12 -26,4 -6,2 Z" fill="#7a2f22"/>
+        <path d="M-2,-8 C-20,0 -40,16 -52,28 L-46,32 C-34,22 -16,10 4,2 Z" fill="#8c3a2a"/>
+        <path d="M-8,-60 C-16,-40 -26,-14 -32,2 L22,2 C16,-16 10,-40 6,-60 Z" fill="#c4161c"/>
+        <path d="M-8,-60 C-12,-48 -16,-36 -20,-24 L-4,-26 C-2,-38 0,-50 2,-60 Z" fill="#e2393e" opacity=".7"/>
+        <circle cx="-1" cy="-72" r="12.5" fill="#6b3524"/>
+        <path d="M4,-83 C20,-86 34,-74 44,-60 C32,-66 20,-66 10,-62 C14,-70 10,-78 4,-83 Z" fill="#2a140c"/>
+        <path d="M-12,-76 C-10,-86 2,-90 10,-82 C2,-84 -6,-82 -12,-76 Z" fill="#2a140c"/>
+        <path d="M-6,-54 L-20,-100 M4,-54 L20,-104" stroke="#7a3a28" stroke-width="5" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- overhanging branch top-right (leaves by script) -->
+  <path d="M1090,-10 C1040,40 980,70 900,96 C960,90 1020,74 1090,40 Z" fill="#5b3a22"/>
+  <g id="leaves"></g>
+
+  <!-- soft white wash behind the copy for legibility -->
+  <rect width="1080" height="1080" fill="url(#haze)"/>
+
+  <!-- tika splash and jamara sprig on the title (positioned next to the word) -->
+  <g id="splash" transform="translate(462 214)"></g>
+  <g id="sprig" transform="translate(704 352)"></g>
+
+  <!-- foreground: stone ledge, brass plate, tika, jamara, flowers -->
+  <path d="M-20,948 L650,938 Q676,940 680,962 L684,1000 L-20,1000 Z" fill="url(#stone)"/>
+  <path d="M-20,948 L650,938 Q672,940 676,952 L-20,960 Z" fill="#cfa77b" opacity=".7"/>
+  <g id="dahlia" transform="translate(40 880)"></g>
+  <g filter="url(#shadow)">
+    <ellipse cx="300" cy="944" rx="250" ry="44" fill="url(#brass)"/>
+    <ellipse cx="300" cy="938" rx="222" ry="34" fill="#c99234"/>
+    <ellipse cx="300" cy="936" rx="206" ry="28" fill="#e4b44f"/>
+  </g>
+  <g id="jamara"></g>
+  <g filter="url(#shadow)">
+    <path d="M118,912 Q122,960 196,962 Q270,960 274,912 Z" fill="url(#brass)"/>
+    <ellipse cx="196" cy="912" rx="78" ry="16" fill="#f6d27a"/>
+  </g>
+  <ellipse cx="196" cy="910" rx="70" ry="13" fill="#9c0f17"/>
+  <path d="M132,912 Q160,880 196,878 Q236,880 260,912 Q196,924 132,912 Z" fill="url(#tika)"/>
+  <g id="tikaGrains"></g>
+  <g id="marigolds"></g>
+</svg>
+
+<div class="copy">
+  <div class="happy">HAPPY</div>
+  <div class="dashain">Dashain</div>
+  <div class="rule"></div>
+  <div class="nepali">विजया दशमी २०८३ को हार्दिक मंगलमय शुभकामना</div>
+  <div class="message">May this auspicious festival of Dashain bring happiness, good health, prosperity and new energy to you and your family.</div>
+  <div class="together">Let’s continue to build a more cooperative and prosperous society — together.</div>
+</div>
+
+<div class="footer">
+  <div class="url">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#157a48" stroke-width="1.8" stroke-linecap="round">
+      <circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19"/>
+    </svg>
+    www.csnnepal.org.np
+  </div>
+  <img class="logo" src="../../public/logo.png" alt="Co-operation Society Nepal">
+</div>
+</div>
+
+<script>
+  // Deterministic decoration (houses, foliage, kites, jamara, flowers) so every render is identical.
+  const NS = "http://www.w3.org/2000/svg";
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const el = (parent, tag, attrs) => {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    document.getElementById(parent)?.appendChild(n) ?? parent.appendChild(n);
+    return n;
+  };
+
+  // town houses
+  const walls = ["#f4ede2", "#efe2cf", "#e8d3b8", "#f7f1e8", "#d9b99a", "#c98d6a"];
+  for (let i = 0; i < 70; i++) {
+    const x = 400 + rnd() * 700, base = 905 + rnd() * 26 - (x > 900 ? 18 : 0);
+    const w = 16 + rnd() * 26, h = 14 + rnd() * 26;
+    el("town", "rect", { x, y: base - h, width: w, height: h, fill: walls[Math.floor(rnd() * walls.length)] });
+    el("town", "rect", { x: x - 1, y: base - h - 4, width: w + 2, height: 5, fill: rnd() > .5 ? "#a2482f" : "#7d6a5c" });
+    for (let r = 0; r < Math.floor(h / 10); r++)
+      el("town", "rect", { x: x + 4, y: base - h + 5 + r * 9, width: w - 8, height: 3, fill: "#8a6a52", opacity: .45 });
+  }
+
+  // bushes with red flowers along the hills
+  const greens = ["#2f5d2c", "#3d6f35", "#4c8040", "#5d9149"];
+  for (let i = 0; i < 46; i++) {
+    const x = rnd() * 1100, y = 930 + rnd() * 50, r = 18 + rnd() * 26;
+    el("bushes", "circle", { cx: x, cy: y, r, fill: greens[Math.floor(rnd() * greens.length)] });
+    if (rnd() > .45) for (let k = 0; k < 4; k++)
+      el("bushes", "circle", { cx: x + (rnd() - .5) * r * 1.4, cy: y + (rnd() - .7) * r, r: 3 + rnd() * 3, fill: rnd() > .3 ? "#d81e28" : "#ff7a1a" });
+  }
+
+  // kites
+  function kite(x, y, s, rot, cols) {
+    const g = el("kites", "g", { transform: `translate(${x} ${y}) rotate(${rot})` });
+    const T = [0, -s], R = [0.72 * s, -0.12 * s], B = [0, 1.15 * s], L = [-0.72 * s, -0.12 * s], C = [0, -0.12 * s];
+    const tri = (a, b, c, f) => el(g, "polygon", { points: [a, b, c].map(p => p.join(",")).join(" "), fill: f });
+    tri(T, R, C, cols[0]); tri(T, L, C, cols[1]); tri(L, B, C, cols[2]); tri(R, B, C, cols[3]);
+    el(g, "path", { d: `M${T} L${B} M${L} L${R}`, stroke: "#5a3a1a", "stroke-width": Math.max(1, s / 30) });
+    let d = `M0,${1.15 * s}`;
+    for (let k = 1; k <= 6; k++) d += ` Q${(k % 2 ? 1 : -1) * s * .35},${1.15 * s + k * s * .45 - s * .22} ${k * s * .12},${1.15 * s + k * s * .45}`;
+    el(g, "path", { d, stroke: cols[0], "stroke-width": Math.max(1.2, s / 22), fill: "none" });
+    for (let k = 1; k <= 3; k++) {
+      const by = 1.15 * s + k * s * .9, bx = k * s * .24;
+      el(g, "polygon", { points: `${bx - s * .12},${by - s * .07} ${bx},${by} ${bx - s * .12},${by + s * .07}`, fill: cols[k % 4] });
+      el(g, "polygon", { points: `${bx + s * .12},${by - s * .07} ${bx},${by} ${bx + s * .12},${by + s * .07}`, fill: cols[k % 4] });
+    }
+  }
+  kite(812, 262, 58, -14, ["#e3262f", "#f5c518", "#1f9d55", "#f08a1c"]);
+  kite(905, 470, 27, 10, ["#f5c518", "#e3262f", "#2a7de1", "#e3262f"]);
+  kite(648, 104, 22, -6, ["#2a7de1", "#ffffff", "#e3262f", "#f5c518"]);
+
+  // bamboo nodes on the swing poles
+  for (const [x1, y1, x2, y2] of [[878, 1010, 992, 300], [1082, 1000, 966, 300]])
+    for (let t = .08; t < .95; t += .12)
+      el("bambooNodes", "circle", { cx: x1 + (x2 - x1) * t, cy: y1 + (y2 - y1) * t, r: 6.5 });
+
+  // leaves on the branch
+  for (let i = 0; i < 60; i++) {
+    const t = rnd(), x = 1090 - t * 210 + (rnd() - .5) * 60, y = 20 + t * 70 + (rnd() - .3) * 70;
+    const col = ["#3f7a2e", "#5c9a3a", "#7cb342", "#2f6224"][Math.floor(rnd() * 4)];
+    el("leaves", "ellipse", { cx: x, cy: y, rx: 16, ry: 7, fill: col, transform: `rotate(${rnd() * 180} ${x} ${y})` });
+  }
+  for (let i = 0; i < 9; i++) {
+    const x = 900 + rnd() * 180, y = 30 + rnd() * 90;
+    for (let p = 0; p < 6; p++) el("leaves", "ellipse", { cx: x, cy: y - 7, rx: 3.5, ry: 8, fill: "#d81e28", transform: `rotate(${p * 60} ${x} ${y})` });
+  }
+
+  // tika splash beside the title
+  for (let i = 0; i < 70; i++) {
+    const a = rnd() * Math.PI * 2, r = Math.pow(rnd(), 1.8) * 46;
+    el("splash", "circle", { cx: Math.cos(a) * r * 1.3, cy: Math.sin(a) * r * .9, r: 1.5 + rnd() * (r < 18 ? 9 : 3), fill: rnd() > .2 ? "#d4151d" : "#ff3b3b", opacity: .92 });
+  }
+
+  // jamara sprig at the end of the title
+  for (let i = 0; i < 38; i++) {
+    const len = 70 + rnd() * 80, ang = -Math.PI / 2 + (rnd() - .3) * 1.0, bend = (rnd() - .5) * 26;
+    const ex = Math.cos(ang) * len, ey = Math.sin(ang) * len;
+    el("sprig", "path", { d: `M${(rnd() - .5) * 8},0 Q${ex * .4 + bend},${ey * .55} ${ex},${ey}`,
+      stroke: ["#9ccc4a", "#c3e06a", "#7fb43c", "#d8eb8a"][Math.floor(rnd() * 4)], "stroke-width": 2 + rnd() * 2, fill: "none", "stroke-linecap": "round" });
+  }
+  el("sprig", "rect", { x: -9, y: -16, width: 18, height: 8, rx: 2, fill: "#c4161c" });
+
+  // jamara bundle on the plate
+  for (let i = 0; i < 120; i++) {
+    const bx = 330 + (rnd() - .5) * 60, by = 936;
+    const len = 110 + rnd() * 140, ang = -Math.PI / 2 + (rnd() - .35) * 1.3, bend = (rnd() - .5) * 60;
+    const ex = bx + Math.cos(ang) * len, ey = by + Math.sin(ang) * len;
+    el("jamara", "path", { d: `M${bx},${by} Q${(bx + ex) / 2 + bend},${(by + ey) / 2} ${ex},${ey}`,
+      stroke: ["#a6d257", "#c7e57a", "#86bb45", "#e1f09a", "#6fa83a"][Math.floor(rnd() * 5)], "stroke-width": 2.2 + rnd() * 2.2, fill: "none", "stroke-linecap": "round" });
+  }
+  el("jamara", "rect", { x: 296, y: 918, width: 68, height: 10, rx: 3, fill: "#c4161c" });
+
+  // tika grains
+  for (let i = 0; i < 160; i++) {
+    const x = 140 + rnd() * 112, y = 884 + rnd() * 30;
+    el("tikaGrains", "circle", { cx: x, cy: y + Math.abs(x - 196) * .25, r: .9 + rnd() * 1.6, fill: rnd() > .5 ? "#ff4a4f" : "#8e0a12", opacity: .85 });
+  }
+
+  // marigolds
+  function marigold(x, y, s) {
+    const g = el("marigolds", "g", { transform: `translate(${x} ${y})` });
+    const rings = [[1, "#d9530f", 16], [.78, "#f07d16", 14], [.56, "#f9a21f", 12], [.32, "#fcc33a", 9]];
+    for (const [k, c, n] of rings)
+      for (let p = 0; p < n; p++) {
+        const a = p / n * Math.PI * 2 + k;
+        el(g, "ellipse", { cx: Math.cos(a) * s * k * .55, cy: Math.sin(a) * s * k * .42, rx: s * .32, ry: s * .24, fill: c, transform: `rotate(${a * 57.3} ${Math.cos(a) * s * k * .55} ${Math.sin(a) * s * k * .42})` });
+      }
+    el(g, "circle", { cx: 0, cy: 0, r: s * .14, fill: "#c6460c" });
+  }
+  marigold(430, 942, 46); marigold(486, 930, 36); marigold(392, 960, 34); marigold(96, 944, 40);
+
+  // red dahlia at the left edge
+  const dah = document.getElementById("dahlia");
+  for (const [rad, c, n] of [[78, "#a80f17", 18], [60, "#d01a22", 16], [42, "#ea2e33", 14], [24, "#f04a44", 10]])
+    for (let p = 0; p < n; p++) {
+      const a = p / n * Math.PI * 2 + rad;
+      const cx = Math.cos(a) * rad * .55, cy = Math.sin(a) * rad * .55;
+      el(dah, "ellipse", { cx, cy, rx: rad * .42, ry: rad * .14, fill: c, transform: `rotate(${a * 57.3} ${cx} ${cy})` });
+    }
+  el(dah, "circle", { cx: 0, cy: 0, r: 9, fill: "#f2b230" });
+
+  document.fonts.ready.then(() => { document.body.dataset.ready = "1"; });
+</script>
+</body>
+</html>
