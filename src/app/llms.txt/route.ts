@@ -57,7 +57,7 @@ export function GET() {
     ...(VACANCIES.length
       ? VACANCIES.map(
           (v) =>
-            `- [${v.title} (${v.titleNe})](${SITE_URL}/vacancies/${v.slug}): ${v.location}; ${v.contract}; ${v.deadline}. Apply by emailing a CV and application letter to ${v.applyEmail}.`
+            `- [${v.title}${v.titleNe ? ` (${v.titleNe})` : ""}](${SITE_URL}/vacancies/${v.slug}): ${v.positions} positions; ${v.location}; ${v.contract}; ${v.deadline}. ${v.summary} Apply by emailing a CV and ${v.lang === "ne" ? "application letter" : "cover letter"} to ${v.applyEmail}.`
         )
       : ["- No open vacancies at the moment."]),
     "",

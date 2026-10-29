@@ -510,14 +510,18 @@ export const COVID_MESSAGES = [
 export type Vacancy = {
   slug: string;
   title: string;
-  titleNe: string;
+  lang: "ne" | "en"; // language the notice body is written in
+  titleNe?: string;
   project: string;
   positions: string;
   location: string;
   contract: string;
   postedDate: string; // ISO date the notice went up on the site
   deadline: string;
-  jobDescriptionUrl: string;
+  jobDescriptionUrl?: string;
+  education: "high school" | "bachelor degree" | "postgraduate degree"; // schema.org credentialCategory
+  experienceMonths?: number;
+  metaDescription?: string;
   applyEmail: string;
   summary: string;
   intro: string;
@@ -532,8 +536,51 @@ export type Vacancy = {
 // Newest first — add new openings at the top of this list.
 export const VACANCIES: Vacancy[] = [
   {
+    slug: "psychosocial-counsellor-mhpss-supervisor",
+    title: "Psychosocial Counsellor / MHPSS Technical Supervisor",
+    lang: "en",
+    project: "Bhotekoshi Flood Response Programme — Caritas Nepal",
+    positions: "2 (Two)",
+    location: "Holding/temporary accommodation centres and communities in Nuwakot and Rasuwa",
+    contract: "Short-term, field-based with flexible working hours",
+    postedDate: "2026-10-29",
+    deadline: "Rolling basis — immediate hiring upon publication",
+    applyEmail: "csnnepal@gmail.com",
+    education: "bachelor degree",
+    experienceMonths: 36,
+    metaDescription:
+      "2 Psychosocial Counsellor / MHPSS Technical Supervisor posts for CSN Nepal's flood response in Nuwakot and Rasuwa. Rolling basis — email your CV to apply.",
+    summary:
+      "Deliver survivor-centred psychosocial counselling to flood-affected people and provide technical supervision, mentoring and quality assurance to deployed Barefoot Counsellors.",
+    intro:
+      "Cooperation Society Nepal (CSN), in partnership with Caritas Nepal, invites applications from qualified and passionate Nepalese citizens for immediate appointment to the following short-term, field-based positions under the Bhotekoshi Flood Response Programme.",
+    responsibilities: [
+      "Direct Psychosocial Support: Deliver survivor-centred, confidential counselling to flood-affected individuals, families, and vulnerable groups (children, women, older persons, persons with disabilities, and bereaved families).",
+      "Technical Supervision: Provide technical guidance, mentoring, case consultations, and quality assurance to deployed Barefoot Counsellors.",
+      "Capacity Building: Orient frontline staff on Psychological First Aid (PFA), Protection, Child Safeguarding, GBV principles, and PSEA.",
+      "Referral Coordination: Establish service pathways and facilitate safe, confidential referrals for clinical mental health or specialized protection support.",
+      "Documentation & Compliance: Maintain secure, non-identifiable monitoring records and submit routine progress reports in line with Caritas/CSN safeguarding standards.",
+    ],
+    qualifications: [
+      "Education: Bachelor's degree in Psychology, Counselling Psychology, Clinical Psychology, Mental Health, or Social Work with professional counselling credentials (Master's preferred).",
+      "Experience: Minimum 3 years of experience in psychosocial counselling, MHPSS supervision, or emergency response settings.",
+      "Competencies: Strong skills in PFA, trauma-informed care, technical supervision, referral coordination, and safeguarding principles.",
+      "Language: Fluency in Nepali (essential); knowledge of English and local dialects spoken in Nuwakot/Rasuwa is an advantage.",
+    ],
+    safeguarding: [
+      "CSN and Caritas Nepal strictly adhere to Safeguarding, Child Protection, and PSEA policies.",
+    ],
+    howToApply: "Send your updated CV/Resume and Cover Letter to:",
+    closingNote:
+      "Due to the emergency nature of the flood response, applications will be evaluated on a rolling basis. Interested candidates are encouraged to apply immediately upon publication. Shortlisting and recruitment will begin right away, and positions may be filled as soon as suitable candidates are identified.",
+    encouragement:
+      "CSN and Caritas Nepal are equal opportunity employers. Women, marginalized groups, and persons with disabilities are strongly encouraged to apply.",
+  },
+  {
     slug: "barefoot-counsellor",
     title: "Barefoot Counsellor",
+    lang: "ne",
+    education: "high school",
     titleNe: "आधारभूत मनोसामाजिक सहयोगकर्ता",
     project: "Bhotekoshi Flood Response — Caritas Nepal / CRS",
     positions: "Several (केही)",
@@ -578,6 +625,6 @@ export const VACANCIES: Vacancy[] = [
 ];
 
 export function applyMailto(v: Vacancy) {
-  const subject = `Application: ${v.title} (${v.titleNe})`;
+  const subject = `Application: ${v.title}${v.titleNe ? ` (${v.titleNe})` : ""}`;
   return `mailto:${v.applyEmail}?subject=${encodeURIComponent(subject)}`;
 }

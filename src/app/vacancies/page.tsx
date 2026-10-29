@@ -50,7 +50,7 @@ export default function Page() {
       />
       <section className="max-w-5xl mx-auto px-4 py-14 space-y-6">
         <p className="text-sm font-semibold text-[#043d24]/60">
-          {VACANCIES.length} open {VACANCIES.length === 1 ? "position" : "positions"}
+          {VACANCIES.length} open {VACANCIES.length === 1 ? "vacancy" : "vacancies"}
         </p>
         {VACANCIES.length === 0 && (
           <Card className="p-8">
@@ -74,9 +74,11 @@ export default function Page() {
                 {v.title}
               </Link>
             </h2>
-            <p lang="ne" className="mt-1 text-lg font-medium text-[#043d24]/70">
-              {v.titleNe}
-            </p>
+            {v.titleNe && (
+              <p lang="ne" className="mt-1 text-lg font-medium text-[#043d24]/70">
+                {v.titleNe}
+              </p>
+            )}
             <p className="mt-2 text-sm font-semibold text-[#157a48]">{v.project}</p>
             <p className="mt-4 text-[15px] leading-relaxed text-[#043d24]/75">{v.summary}</p>
             <ul className="mt-5 grid gap-3 sm:grid-cols-3 text-sm text-[#043d24]/80">
@@ -84,7 +86,7 @@ export default function Page() {
                 <MapPin size={18} className="text-[#01723b] shrink-0 mt-0.5" /> {v.location}
               </li>
               <li className="flex items-start gap-2">
-                <UsersThree size={18} className="text-[#01723b] shrink-0 mt-0.5" /> {v.positions}
+                <UsersThree size={18} className="text-[#01723b] shrink-0 mt-0.5" /> {v.positions} positions
               </li>
               <li className="flex items-start gap-2">
                 <CalendarBlank size={18} className="text-[#01723b] shrink-0 mt-0.5" /> {v.contract}
@@ -101,11 +103,13 @@ export default function Page() {
                   <EnvelopeSimple size={17} /> Apply: {v.applyEmail}
                 </a>
               </Button>
-              <Button asChild variant="outline">
-                <a href={v.jobDescriptionUrl} target="_blank" rel="noopener noreferrer">
-                  <FileText size={17} /> Job description
-                </a>
-              </Button>
+              {v.jobDescriptionUrl && (
+                <Button asChild variant="outline">
+                  <a href={v.jobDescriptionUrl} target="_blank" rel="noopener noreferrer">
+                    <FileText size={17} /> Job description
+                  </a>
+                </Button>
+              )}
             </div>
           </Card>
         ))}
