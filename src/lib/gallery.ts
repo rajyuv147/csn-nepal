@@ -65,6 +65,15 @@ export const GALLERIES: GalleryAlbum[] = [
     from: 46,
     to: 63,
   },
+  {
+    slug: "lamibagaicha-holding-center",
+    title: "Lamibagaicha Holding Center & Community Kitchen",
+    detail:
+      "Temporary shelter at Bidur-5, Lamibagaicha, Nuwakot, managed by CRS, Caritas and CSN, with daily meals from the community kitchen and CSN's child safeguarding code of conduct on display.",
+    publishedDate: "Oct 29, 2026",
+    from: 64,
+    to: 68,
+  },
 ];
 
 const ADDITIONAL_GALLERY_PHOTOS: Record<number, string> = {
