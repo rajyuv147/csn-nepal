@@ -31,20 +31,63 @@ export async function generateMetadata({ params }: PageProps<"/vacancies/[slug]"
   const v = findVacancy((await params).slug);
   if (!v) return {};
   return metaFor(`/vacancies/${v.slug}`, {
-    title: fitTitle(`${v.title} Job Vacancy | CSN Nepal`, `${v.title} | CSN Nepal`),
+    title: fitTitle(`${v.title} Job Vacancy | CSN Nepal`, `${v.title} | CSN Nepal`, `${v.title} | CSN`),
     description: clampDescription(
-      `${v.title} vacancy at CSN Nepal — ${v.location}, ${v.contract}. Email your CV to ${v.applyEmail} to apply.`
+      v.metaDescription ??
+        `${v.title} vacancy at CSN Nepal — ${v.location}, ${v.contract}. Email your CV to ${v.applyEmail} to apply.`
     ),
   });
 }
 
-function Section({ title, items }: { title: string; items: string[] }) {
+const LABELS = {
+  ne: {
+    kicker: "Vacancy Notice • कर्मचारी आवश्यकताको सूचना",
+    responsibilities: "Key responsibilities — मुख्य जिम्मेवारीहरू",
+    qualifications: "Minimum qualifications & experience — आवश्यक न्यूनतम योग्यता र अनुभव",
+    safeguardingNe: "बाल संरक्षण तथा सुरक्षा प्रतिबद्धता",
+    apply: "How to apply — आवेदन दिने प्रक्रिया",
+    email: "इमेल",
+    phone: "फोन",
+    phoneDisplay: "०१०–५६१००१",
+    address: "ठेगाना",
+    addressValue: "सहकार्य समाज नेपाल (CSN), विदुर–४, बट्टार, नुवाकोट",
+    sendLine: "Send your CV and application letter to",
+  },
+  en: {
+    kicker: "Vacancy Notice",
+    responsibilities: "Key responsibilities",
+    qualifications: "Qualifications & skills",
+    safeguardingNe: undefined,
+    apply: "How to apply",
+    email: "Email",
+    phone: "Phone",
+    phoneDisplay: "010-561001",
+    address: "Address",
+    addressValue: "Co-operation Society Nepal (CSN), Bidur-4, Battar, Nuwakot",
+    sendLine: "Send your CV and cover letter to",
+  },
+};
+
+// "Label: text" items get a bold label, as in the original notices.
+function Item({ text }: { text: string }) {
+  const i = text.indexOf(": ");
+  if (i < 1 || i > 40) return <>{text}</>;
+  return (
+    <>
+      <strong className="font-semibold text-[#043d24]">{text.slice(0, i)}:</strong> {text.slice(i + 2)}
+    </>
+  );
+}
+
+function Section({ title, items, lang }: { title: string; items: string[]; lang: string }) {
   return (
     <Card className="p-8">
       <h2 className="font-display text-2xl font-semibold">{title}</h2>
-      <ul lang="ne" className="mt-4 space-y-2.5 text-[15px] text-[#043d24]/80 leading-relaxed list-disc pl-5">
+      <ul lang={lang} className="mt-4 space-y-2.5 text-[15px] text-[#043d24]/80 leading-relaxed list-disc pl-5">
         {items.map((i) => (
-          <li key={i}>{i}</li>
+          <li key={i}>
+            <Item text={i} />
+          </li>
         ))}
       </ul>
     </Card>
@@ -54,6 +97,7 @@ function Section({ title, items }: { title: string; items: string[] }) {
 export default async function Page({ params }: PageProps<"/vacancies/[slug]">) {
   const v = findVacancy((await params).slug);
   if (!v) notFound();
+  const t = LABELS[v.lang];
 
   const jobPosting = {
     "@context": "https://schema.org",
@@ -74,7 +118,15 @@ export default async function Page({ params }: PageProps<"/vacancies/[slug]">) {
       sameAs: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
     },
-    educationRequirements: { "@type": "EducationalOccupationalCredential", credentialCategory: "high school" },
+    educationRequirements: { "@type": "EducationalOccupationalCredential", credentialCategory: v.education },
+    ...(v.experienceMonths
+      ? {
+          experienceRequirements: {
+            "@type": "OccupationalExperienceRequirements",
+            monthsOfExperience: v.experienceMonths,
+          },
+        }
+      : {}),
     jobLocation: ["Rasuwa", "Nuwakot"].map((district) => ({
       "@type": "Place",
       address: { "@type": "PostalAddress", addressRegion: district, addressCountry: "NP" },
@@ -89,7 +141,7 @@ export default async function Page({ params }: PageProps<"/vacancies/[slug]">) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPosting) }}
       />
-      <PageHero kicker="Vacancy Notice • कर्मचारी आवश्यकताको सूचना" title={v.title} intro={v.titleNe} />
+      <PageHero kicker={t.kicker} title={v.title} intro={v.titleNe ?? v.summary} />
       <section className="max-w-5xl mx-auto px-4 py-14 grid gap-6 lg:grid-cols-[1fr_320px] items-start">
         <div className="space-y-6 min-w-0">
           <Link
@@ -104,46 +156,47 @@ export default async function Page({ params }: PageProps<"/vacancies/[slug]">) {
                 <Briefcase size={15} /> {v.project}
               </Badge>
             </div>
-            <p lang="ne" className="mt-5 text-[15px] leading-relaxed text-[#043d24]/80">
+            <p lang={v.lang} className="mt-5 text-[15px] leading-relaxed text-[#043d24]/80">
               {v.intro}
             </p>
           </Card>
-          <Section title="Key responsibilities — मुख्य जिम्मेवारीहरू" items={v.responsibilities} />
-          <Section
-            title="Minimum qualifications & experience — आवश्यक न्यूनतम योग्यता र अनुभव"
-            items={v.qualifications}
-          />
+          <Section title={t.responsibilities} items={v.responsibilities} lang={v.lang} />
+          <Section title={t.qualifications} items={v.qualifications} lang={v.lang} />
           <Card className="p-8 bg-[#e7f3ec]/60">
             <h2 className="font-display text-2xl font-semibold flex items-center gap-2">
               <ShieldCheck size={26} className="text-[#01723b]" /> Child protection & safeguarding
             </h2>
-            <p className="text-sm font-semibold text-[#043d24]/60 mt-1" lang="ne">
-              बाल संरक्षण तथा सुरक्षा प्रतिबद्धता
-            </p>
-            <div lang="ne" className="mt-4 space-y-3 text-[15px] leading-relaxed text-[#043d24]/80">
+            {t.safeguardingNe && (
+              <p className="text-sm font-semibold text-[#043d24]/60 mt-1" lang="ne">
+                {t.safeguardingNe}
+              </p>
+            )}
+            <div lang={v.lang} className="mt-4 space-y-3 text-[15px] leading-relaxed text-[#043d24]/80">
               {v.safeguarding.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
           </Card>
           <Card className="p-8">
-            <h2 className="font-display text-2xl font-semibold">How to apply — आवेदन दिने प्रक्रिया</h2>
-            <div lang="ne" className="mt-4 space-y-3 text-[15px] leading-relaxed text-[#043d24]/80">
+            <h2 className="font-display text-2xl font-semibold">{t.apply}</h2>
+            <div lang={v.lang} className="mt-4 space-y-3 text-[15px] leading-relaxed text-[#043d24]/80">
               <p>{v.howToApply}</p>
               <ul className="space-y-1.5">
                 <li>
-                  इमेल:{" "}
+                  {t.email}:{" "}
                   <a href={applyMailto(v)} className="font-semibold text-[#01723b] underline">
                     {v.applyEmail}
                   </a>
                 </li>
                 <li>
-                  फोन:{" "}
+                  {t.phone}:{" "}
                   <a href="tel:+97710561001" className="font-semibold text-[#01723b] underline">
-                    ०१०–५६१००१
+                    {t.phoneDisplay}
                   </a>
                 </li>
-                <li>ठेगाना: सहकार्य समाज नेपाल (CSN), विदुर–४, बट्टार, नुवाकोट</li>
+                <li>
+                  {t.address}: {t.addressValue}
+                </li>
               </ul>
               <p>{v.closingNote}</p>
               <p className="font-semibold text-[#043d24]">{v.encouragement}</p>
@@ -176,14 +229,16 @@ export default async function Page({ params }: PageProps<"/vacancies/[slug]">) {
                   <EnvelopeSimple size={17} /> Apply by email
                 </a>
               </Button>
-              <Button asChild variant="outline" className="w-full">
-                <a href={v.jobDescriptionUrl} target="_blank" rel="noopener noreferrer">
-                  <FileText size={17} /> Full job description
-                </a>
-              </Button>
+              {v.jobDescriptionUrl && (
+                <Button asChild variant="outline" className="w-full">
+                  <a href={v.jobDescriptionUrl} target="_blank" rel="noopener noreferrer">
+                    <FileText size={17} /> Full job description
+                  </a>
+                </Button>
+              )}
             </div>
             <p className="mt-4 text-[13px] text-[#043d24]/60 leading-relaxed">
-              Send your CV and application letter to{" "}
+              {t.sendLine}{" "}
               <a href={applyMailto(v)} className="font-semibold text-[#01723b] whitespace-nowrap">
                 {v.applyEmail}
               </a>

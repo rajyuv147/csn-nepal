@@ -111,7 +111,7 @@ export const META: Record<string, Meta> = {
   "/vacancies": {
     title: "Vacancies — Current Job Openings | CSN Nepal",
     description:
-      "Open positions at Co-operation Society Nepal: Barefoot Counsellor roles for the Bhotekoshi Flood Response in Rasuwa and Nuwakot. Apply by email.",
+      "Jobs at CSN Nepal for the Bhotekoshi Flood Response in Nuwakot and Rasuwa: Psychosocial Counsellor / MHPSS Supervisor and Barefoot Counsellor. Apply by email.",
   },
   "/stories": {
     title: "Success Stories From the Field | CSN Nepal",
