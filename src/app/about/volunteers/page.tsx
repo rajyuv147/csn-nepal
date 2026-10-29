@@ -1,3 +1,4 @@
+import { FaqSection } from "@/components/faq";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Textarea, Label } from "@/components/ui";
 import {
@@ -26,6 +27,24 @@ const ROLES = [
     icon: ShieldCheck,
     title: "Disaster Risk Reduction",
     body: "Join preparedness training, community planning, relief distribution and recovery support during emergencies.",
+  },
+];
+
+const FAQS = [
+  {
+    question: "How can I volunteer with CSN Nepal?",
+    answer:
+      "Fill in the volunteer sign-up form on this page or email csnnepal@gmail.com. Roles include teaching and learning support, health camps and disaster risk reduction.",
+  },
+  {
+    question: "Who can volunteer with CSN Nepal?",
+    answer:
+      "Students, professionals and retirees from Nepal and abroad are all welcome — whether you can teach, organise a health camp, translate, photograph events or help during disasters.",
+  },
+  {
+    question: "Do volunteers help with disaster response?",
+    answer:
+      "Yes. Volunteers join preparedness training, community planning, relief distribution and recovery support during emergencies.",
   },
 ];
 
@@ -103,6 +122,7 @@ export default function Page() {
           </form>
         </Card>
       </section>
+      <FaqSection faqs={FAQS} />
       <DonateBand />
     </>
   );

@@ -17,6 +17,7 @@ import {
 import { CONTACT, NAV } from "@/lib/data";
 import { Button } from "./ui";
 import { cn } from "./ui";
+import { PageSchema } from "./page-schema";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
@@ -165,6 +166,7 @@ export function PageHero({
       <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#f6b231]/20 blur-3xl" />
       <div className="absolute -bottom-32 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#157a48]/25 blur-3xl" />
       <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-20">
+        <PageSchema title={title} intro={intro} />
         <p className="inline-flex items-center gap-2 text-[13px] font-bold tracking-wide bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-5">
           <span className="w-2 h-2 rounded-full bg-[#f6b231]" /> {kicker}
         </p>

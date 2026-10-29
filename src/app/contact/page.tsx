@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { metaFor } from "@/lib/seo";
+import { FaqSection } from "@/components/faq";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Textarea, Label } from "@/components/ui";
 import { CONTACT } from "@/lib/data";
@@ -12,6 +13,25 @@ import {
 
 export const metadata: Metadata = metaFor("/contact");
 
+const FAQS = [
+  {
+    question: "Where is CSN Nepal's head office?",
+    answer: `CSN's head office is at ${CONTACT.headOffice}. CSN also has a contact office at ${CONTACT.branchOffice}.`,
+  },
+  {
+    question: "How do I contact CSN Nepal?",
+    answer: `Email ${CONTACT.email.join(" or ")}, or call ${CONTACT.phones.join(", ")}. You can also use the contact form on this page.`,
+  },
+  {
+    question: "Does CSN Nepal have field offices?",
+    answer: `Yes. CSN runs field offices at ${CONTACT.fieldOffices.join(", and ")}.`,
+  },
+  {
+    question: "Which districts does CSN Nepal work in?",
+    answer: `CSN works in ${CONTACT.workingDistricts}.`,
+  },
+];
+
 export default function Page() {
   return (
     <>
@@ -21,6 +41,7 @@ export default function Page() {
         intro="Questions, partnerships or support — fill out the form & we'll do our best to help."
       />
       <section className="max-w-6xl mx-auto px-4 py-14 space-y-10">
+        <h2 className="sr-only">CSN offices and contact details</h2>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           <Card className="p-6">
             <MapPin size={28} weight="duotone" className="text-[#01723b]" />
@@ -136,6 +157,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={FAQS} />
       <DonateBand />
     </>
   );

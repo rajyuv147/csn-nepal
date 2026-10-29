@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { metaFor } from "@/lib/seo";
+import { FaqSection } from "@/components/faq";
 import { PageHero, SectionHeading, DonateBand } from "@/components/site";
 import { Card, Badge } from "@/components/ui";
 import { PROJECTS } from "@/lib/data";
@@ -26,6 +27,29 @@ function ProjectCard({ p }: { p: (typeof PROJECTS)[number] }) {
 }
 
 export const metadata: Metadata = metaFor("/programs/projects");
+
+const FAQS = [
+  {
+    question: "What is the Bhotekoshi Flood Response Project?",
+    answer:
+      "A CSN emergency project with CARITAS Nepal, financially supported by CRS, running from August to December 2026. It provides relief distribution, shelter management, volunteer mobilisation, WASH, and child-friendly spaces with facilitators for flood-affected people.",
+  },
+  {
+    question: "Where does the Bhotekoshi Flood Response operate?",
+    answer:
+      "In Bidur, Tarakeshwor, Kispang and Belkotgadhi in Nuwakot district, and Uttargaya, Gosainkunda and Amachhodingmo in Rasuwa district.",
+  },
+  {
+    question: "What relief does the flood response provide?",
+    answer:
+      "Kitchen and bedding non-food-item sets for 600 households across Nuwakot and Rasuwa, a holding centre with a community kitchen at Lamibagaicha (Bidur-5), child-friendly spaces, and psychosocial support from barefoot counsellors.",
+  },
+  {
+    question: "Which partners has CSN Nepal worked with on projects?",
+    answer:
+      "Projects have been delivered with partners including CARITAS Nepal, UNDP Nepal, the Nepal Tourism Board, IO-WGCA Asia and local governments such as Bidur Municipality and Shivapuri and Panchakanya rural municipalities.",
+  },
+];
 
 export default function Page() {
   return (
@@ -58,6 +82,7 @@ export default function Page() {
           ))}
         </div>
       </section>
+      <FaqSection faqs={FAQS} />
       <DonateBand />
     </>
   );

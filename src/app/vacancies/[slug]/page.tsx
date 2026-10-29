@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { metaFor, SITE_URL, SITE_NAME } from "@/lib/seo";
+import { clampDescription, fitTitle, metaFor, SITE_URL } from "@/lib/seo";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button } from "@/components/ui";
 import { VACANCIES, applyMailto } from "@/lib/data";
@@ -31,8 +31,10 @@ export async function generateMetadata({ params }: PageProps<"/vacancies/[slug]"
   const v = findVacancy((await params).slug);
   if (!v) return {};
   return metaFor(`/vacancies/${v.slug}`, {
-    title: `${v.title} Vacancy — ${v.location} | CSN Nepal`,
-    description: `${v.summary} ${v.deadline}.`,
+    title: fitTitle(`${v.title} Job Vacancy | CSN Nepal`, `${v.title} | CSN Nepal`),
+    description: clampDescription(
+      `${v.title} vacancy at CSN Nepal — ${v.location}, ${v.contract}. Email your CV to ${v.applyEmail} to apply.`
+    ),
   });
 }
 
@@ -57,10 +59,22 @@ export default async function Page({ params }: PageProps<"/vacancies/[slug]">) {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     title: v.title,
-    description: [v.summary, ...v.responsibilities, ...v.qualifications].join("\n"),
+    description: [
+      `<p>${v.summary}</p>`,
+      `<p>Responsibilities:</p><ul>${v.responsibilities.map((r) => `<li>${r}</li>`).join("")}</ul>`,
+      `<p>Qualifications:</p><ul>${v.qualifications.map((q) => `<li>${q}</li>`).join("")}</ul>`,
+      `<p>${v.howToApply} Email: ${v.applyEmail}</p>`,
+    ].join(""),
     datePosted: v.postedDate,
     employmentType: "TEMPORARY",
-    hiringOrganization: { "@type": "Organization", name: SITE_NAME, sameAs: SITE_URL, logo: `${SITE_URL}/logo.png` },
+    hiringOrganization: {
+      "@type": "NGO",
+      "@id": `${SITE_URL}/#organisation`,
+      name: "Co-operation Society Nepal (CSN)",
+      sameAs: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+    },
+    educationRequirements: { "@type": "EducationalOccupationalCredential", credentialCategory: "high school" },
     jobLocation: ["Rasuwa", "Nuwakot"].map((district) => ({
       "@type": "Place",
       address: { "@type": "PostalAddress", addressRegion: district, addressCountry: "NP" },

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { GalleryPhotoGrid } from "@/components/gallery-photo-grid";
 import { DonateBand, PageHero } from "@/components/site";
 import { GALLERIES, galleryPhotoSrc, getGalleryBySlug } from "@/lib/gallery";
-import { metaFor, SITE_URL } from "@/lib/seo";
+import { clampDescription, fitTitle, isoDate, metaFor, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 type GalleryPageProps = { params: Promise<{ slug: string }> };
 
@@ -18,9 +18,16 @@ export async function generateMetadata({ params }: GalleryPageProps): Promise<Me
 
   if (!gallery) return metaFor("/gallery");
 
+  const count = gallery.to - gallery.from + 1;
   return metaFor(`/gallery/${gallery.slug}`, {
-    title: `${gallery.title} | CSN`,
-    description: gallery.detail,
+    title: fitTitle(
+      `${gallery.title} — Photo Gallery | CSN Nepal`,
+      `${gallery.title} | CSN Nepal`,
+      `${gallery.title} | CSN`
+    ),
+    description: clampDescription(
+      `${gallery.detail.replace(/\.?$/, ".")} ${count} ${count === 1 ? "photo" : "photos"} from CSN Nepal's Bhotekoshi Flood Response, published ${gallery.publishedDate}.`
+    ),
     image: `${SITE_URL}${galleryPhotoSrc(gallery.from)}`,
     imageAlt: gallery.title,
   });
@@ -43,8 +50,34 @@ export default async function GalleryDetailPage({ params }: GalleryPageProps) {
     }
   );
 
+  const pageUrl = `${SITE_URL}/gallery/${gallery.slug}`;
+  const published = isoDate(gallery.publishedDate);
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    // Same @id as the page node from PageSchema, so both blocks describe one ImageGallery entity.
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: gallery.title,
+    description: gallery.detail,
+    ...(published ? { datePublished: published } : {}),
+    publisher: { "@id": `${SITE_URL}/#organisation` },
+    image: photos.map((photo) => ({
+      "@type": "ImageObject",
+      contentUrl: `${SITE_URL}${photo.src}`,
+      caption: photo.alt,
+      ...(published ? { datePublished: published } : {}),
+      creditText: SITE_NAME,
+      copyrightHolder: { "@id": `${SITE_URL}/#organisation` },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
+      />
       <PageHero
         kicker={`Photo gallery / Published ${gallery.publishedDate}`}
         title={gallery.title}

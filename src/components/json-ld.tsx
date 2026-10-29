@@ -1,55 +1,79 @@
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
-import { CONTACT } from "@/lib/data";
+import { CONTACT, INTERVENTION_AREAS, NETWORKS } from "@/lib/data";
+
+const ORG_ID = `${SITE_URL}/#organisation`;
 
 const ngoSchema = {
-  "@context": "https://schema.org",
   "@type": "NGO",
-  "@id": `${SITE_URL}/#organisation`,
+  "@id": ORG_ID,
   name: SITE_NAME,
-  alternateName: ["CSN Nepal", "सहकार्य समाज नेपाल"],
+  legalName: "Co-operation Society Nepal",
+  alternateName: ["CSN Nepal", "CSN", "Cooperation Society Nepal", "सहकार्य समाज नेपाल", "Sahakarya Samaj Nepal"],
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
+    "@id": `${SITE_URL}/#logo`,
     url: `${SITE_URL}/logo.png`,
+    caption: SITE_NAME,
   },
-  image: `${SITE_URL}/og-image.png`,
+  image: { "@id": `${SITE_URL}/#logo` },
   description:
-    "Non-governmental, non-profit social development organisation (est. 2013, Nuwakot) working in child protection, education, health, livelihood, disaster response and community empowerment.",
+    "Non-governmental, non-profit, non-political and non-religious social development organisation established in 2013 in Nuwakot, Nepal, working in child protection, education, health, livelihood, disaster response and community empowerment.",
+  slogan: "Change is possible — let's start from today",
+  ethicsPolicy: `${SITE_URL}/resources/policies`,
   foundingDate: "2013",
+  foundingLocation: { "@type": "Place", name: "Nuwakot, Nepal" },
+  taxID: CONTACT.pan.replace(/^PAN:\s*/, ""),
+  identifier: [
+    { "@type": "PropertyValue", propertyID: "District Administration Office Nuwakot registration", value: "401/81" },
+    { "@type": "PropertyValue", propertyID: "Social Welfare Council affiliation", value: "37085" },
+    { "@type": "PropertyValue", propertyID: "PAN", value: CONTACT.pan.replace(/^PAN:\s*/, "") },
+  ],
   email: CONTACT.email[0],
-  telephone: CONTACT.phones[0],
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "general inquiries",
-    email: CONTACT.email[0],
-    telephone: CONTACT.phones[0],
-    availableLanguage: ["English", "Nepali"],
-  },
+  telephone: CONTACT.phones[1],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "general inquiries",
+      email: CONTACT.email[0],
+      telephone: CONTACT.phones[1],
+      availableLanguage: ["English", "Nepali"],
+      areaServed: "NP",
+    },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Bidur-4, Battar",
     addressLocality: "Bidur",
-    addressRegion: "Nuwakot District",
+    addressRegion: "Nuwakot District, Bagmati Province",
+    postOfficeBoxNumber: "9632",
     addressCountry: "NP",
   },
+  location: [
+    {
+      "@type": "Place",
+      name: "CSN Head Office",
+      address: { "@type": "PostalAddress", streetAddress: "Bidur-4, Battar", addressLocality: "Bidur", addressRegion: "Nuwakot", addressCountry: "NP" },
+      hasMap: CONTACT.headOfficeMap,
+    },
+    {
+      "@type": "Place",
+      name: "CSN Contact Office",
+      address: { "@type": "PostalAddress", streetAddress: "Budhanilkantha-6", addressLocality: "Kathmandu", addressCountry: "NP" },
+      telephone: "+977-014371433",
+    },
+  ],
   hasMap: CONTACT.headOfficeMap,
-  areaServed: [
-    "Nuwakot District, Nepal",
-    "Rasuwa District, Nepal",
-    "Dhading District, Nepal",
-    "Kathmandu, Nepal",
-    "Tanahun District, Nepal",
-    "Syangja District, Nepal",
-    "Makawanpur District, Nepal",
-  ],
-  knowsAbout: [
-    "Child protection",
-    "Education",
-    "Public health",
-    "Livelihood",
-    "Disaster risk reduction",
-    "Water sanitation and hygiene",
-  ],
+  areaServed: ["Nuwakot", "Rasuwa", "Dhading", "Kathmandu", "Tanahun", "Syangja", "Makawanpur"].map((d) => ({
+    "@type": "AdministrativeArea",
+    name: `${d} District, Nepal`,
+  })),
+  knowsAbout: [...INTERVENTION_AREAS, "Flood response", "Child-friendly spaces", "Sustainable tourism"],
+  memberOf: NETWORKS.map((n) => ({
+    "@type": "Organization",
+    name: n.name,
+    ...(n.web ? { url: n.web } : {}),
+  })),
   sameAs: [
     "https://www.facebook.com/www.csnnepal.org.np/",
     "https://x.com/CSNNepal",
@@ -57,12 +81,13 @@ const ngoSchema = {
 };
 
 const websiteSchema = {
-  "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: SITE_NAME,
-  publisher: { "@id": `${SITE_URL}/#organisation` },
+  alternateName: "CSN Nepal",
+  description: "Official website of Co-operation Society Nepal (CSN), a non-profit based in Nuwakot, Nepal.",
+  publisher: { "@id": ORG_ID },
   inLanguage: "en",
 };
 

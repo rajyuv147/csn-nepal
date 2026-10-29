@@ -16,6 +16,7 @@ export default function Page() {
         intro="Change is a team effort. These government bodies, UN agencies and grassroots organisations make our work possible."
       />
       <section className="max-w-6xl mx-auto px-4 py-14">
+        <h2 className="sr-only">Partner organisations</h2>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PARTNERS.map((p) => (
             <Card key={p.name} className="p-7 flex flex-col gap-3">

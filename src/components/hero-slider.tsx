@@ -17,7 +17,7 @@ const SLIDES = [
     secondaryCta: { label: "Support the response", href: "/donate" },
   },
   {
-    image: "https://www.csnnepal.org.np/gallery/photo-17.jpeg",
+    image: "/gallery/photo-17.jpeg",
     alt: "CSN flood response team in Bhotekoshi",
     eyebrow: "Emergency Response",
     title: "Bhotekoshi Flood Response",
@@ -27,7 +27,7 @@ const SLIDES = [
     secondaryCta: { label: "Who we are", href: "/about" },
   },
   {
-    image: "https://www.csnnepal.org.np/gallery/photo-24.jpeg",
+    image: "/gallery/photo-24.jpeg",
     alt: "Children learning in a CSN child-friendly space",
     eyebrow: "Child Protection",
     title: "Every child deserves a safe space to learn",
@@ -37,7 +37,7 @@ const SLIDES = [
     secondaryCta: { label: "See projects", href: "/programs/projects" },
   },
   {
-    image: "https://www.csnnepal.org.np/gallery/photo-36.jpeg",
+    image: "/gallery/photo-36.jpeg",
     alt: "CSN community support in rural Nepal",
     eyebrow: "Community-Led Development",
     title: "Self-sustained villages, built together",
@@ -86,6 +86,9 @@ export default function HeroSlider() {
             src={slide.image}
             alt={slide.alt}
             className="w-full h-full object-cover"
+            fetchPriority={i === 0 ? "high" : "low"}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#032e1a]/85 via-[#032e1a]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#032e1a]/60 via-transparent to-transparent" />

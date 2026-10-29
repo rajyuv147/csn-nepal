@@ -29,7 +29,7 @@ export const META: Record<string, Meta> = {
       "Meet CSN Nepal's 7-member executive board, executive director and founder board — qualifications, experience, governance and leadership responsibilities.",
   },
   "/about/advisory-board": {
-    title: "Advisory Board | CSN Nepal",
+    title: "Advisory Board — Experts Guiding CSN | CSN Nepal",
     description:
       "Meet the scientists, professors and child-rights activists advising CSN Nepal on strategy, community development, education, health and child protection.",
   },
@@ -39,22 +39,22 @@ export const META: Record<string, Meta> = {
       "See how CSN Nepal is organised: General Assembly, executive board, program teams, field staff and community structures across its working districts.",
   },
   "/about/staff": {
-    title: "Staff Members | CSN Nepal",
+    title: "Staff Members — Our Team in Nuwakot | CSN Nepal",
     description:
       "Meet CSN Nepal's program coordinators, finance officers, engineers, social mobilizers and field officers delivering projects in Nuwakot and nearby districts.",
   },
   "/about/volunteers": {
-    title: "Volunteer With Us | CSN Nepal",
+    title: "Volunteer in Nepal With CSN — Roles & Sign-up",
     description:
       "Volunteer with CSN Nepal in teaching, health camps and disaster response. Explore roles and ways to support children and communities in Nuwakot.",
   },
   "/about/partners": {
-    title: "Our Partners | CSN Nepal",
+    title: "Our Partners — UNDP, CARITAS, UNICEF & More | CSN Nepal",
     description:
       "UNDP, UNICEF, CARITAS, APC France, SCAI Australia and local governments partner with CSN Nepal on community development, relief and recovery programs.",
   },
   "/about/networks": {
-    title: "Our Networks | CSN Nepal",
+    title: "Our Networks — NGO Federation & Alliances | CSN Nepal",
     description:
       "Learn about CSN Nepal's civil-society networks, including NGO Federation, CONSORTIUM Nepal, Consortium for Street Children and DiMaNN, and shared advocacy.",
   },
@@ -94,7 +94,7 @@ export const META: Record<string, Meta> = {
       "Social audits, CILRP reviews, teacher grants and relief distributions — browse local and national news coverage of CSN Nepal's community programmes.",
   },
   "/news/press-releases": {
-    title: "Press Releases | CSN Nepal",
+    title: "Press Releases & Official Statements | CSN Nepal",
     description:
       "Official CSN Nepal statements on completed and ongoing programs, including relief, child-friendly spaces and community celebrations with local partners.",
   },
@@ -187,3 +187,22 @@ export function metaFor(path: string, override?: Meta): Metadata {
 }
 
 export const ALL_PATHS = Object.keys(META);
+
+/** Longest of the candidate titles that still fits in ~60 characters. */
+export function fitTitle(...candidates: string[]) {
+  return candidates.find((t) => t.length <= 60) ?? candidates[candidates.length - 1];
+}
+
+/** Trim a description to search-snippet length at a word boundary. */
+export function clampDescription(text: string, max = 160) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:—-]\s*$/, "") + "…";
+}
+
+/** "Oct 2, 2026" → "2026-10-02" without timezone drift. */
+export function isoDate(display: string) {
+  const d = new Date(display);
+  if (Number.isNaN(d.getTime())) return undefined;
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}

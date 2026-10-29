@@ -16,6 +16,7 @@ export default function Page() {
         intro="The legal and policy foundations that guide our work with children and communities."
       />
       <section className="max-w-5xl mx-auto px-4 py-14 space-y-8">
+        <h2 className="sr-only">CSN governing policies</h2>
         <Card className="p-6 border-l-8 border-l-[#f6b231]">
           <Badge>Internal governance</Badge>
           <p className="mt-3 text-[15px] text-[#043d24]/70 leading-relaxed">

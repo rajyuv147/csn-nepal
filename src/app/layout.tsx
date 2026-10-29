@@ -49,12 +49,13 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
   formatDetection: { email: true, address: true, telephone: true },
-  alternates: { canonical: SITE_URL },
+  // No site-wide canonical: each page sets its own via metaFor(), so a page that forgets
+  // metadata is never mistakenly canonicalised to the homepage.
   openGraph: {
     title: "Co-operation Society Nepal (CSN)",
     description: "Self-sustained, empowered and equitable communities across Nepal.",
-    url: SITE_URL,
     siteName: SITE_NAME,
+    locale: "en_US",
     type: "website",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
   },
@@ -64,7 +65,11 @@ export const metadata: Metadata = {
     description: "Self-sustained, empowered and equitable communities across Nepal.",
     images: [OG_IMAGE],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
