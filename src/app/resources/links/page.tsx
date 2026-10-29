@@ -23,6 +23,7 @@ export default function Page() {
         intro="Trusted organisations and networks working for children, development and humanitarian response."
       />
       <section className="max-w-5xl mx-auto px-4 py-14">
+        <h2 className="sr-only">Useful organisations and networks</h2>
         <div className="grid gap-5 md:grid-cols-2">
           {LINKS.map((l) => (
             <Card key={l.name} className="p-7">

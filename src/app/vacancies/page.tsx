@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { metaFor } from "@/lib/seo";
+import { FaqSection } from "@/components/faq";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button } from "@/components/ui";
 import { VACANCIES, applyMailto } from "@/lib/data";
@@ -15,6 +16,29 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = metaFor("/vacancies");
+
+const FAQS = [
+  {
+    question: "How do I apply for a job at CSN Nepal?",
+    answer:
+      "Open the vacancy, read the full job description, then email your CV and application letter to csnnepal@gmail.com. Use the position title in the email subject.",
+  },
+  {
+    question: "Are CSN Nepal vacancies open until a deadline?",
+    answer:
+      "Each vacancy lists its own deadline. Current flood-response positions are open on a rolling basis until filled, and qualified candidates may be added to a roster and contacted as needs arise.",
+  },
+  {
+    question: "Who is encouraged to apply?",
+    answer:
+      "CSN especially encourages qualified women, local residents, people with disabilities and candidates from marginalised communities to apply.",
+  },
+  {
+    question: "Does CSN Nepal check candidates' backgrounds?",
+    answer:
+      "Selected candidates must follow CSN's child protection, safeguarding and PSEA policies and code of conduct, and background or reference checks may be carried out.",
+  },
+];
 
 export default function Page() {
   return (
@@ -86,6 +110,7 @@ export default function Page() {
           </Card>
         ))}
       </section>
+      <FaqSection faqs={FAQS} />
       <DonateBand />
     </>
   );

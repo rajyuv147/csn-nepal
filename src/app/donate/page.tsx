@@ -1,11 +1,35 @@
 import type { Metadata } from "next";
 import { metaFor } from "@/lib/seo";
+import { FaqSection } from "@/components/faq";
 import { PageHero, DonateBand } from "@/components/site";
 import { Card, Badge, Button, Input, Label } from "@/components/ui";
 import { CONTACT, FINANCE_SYSTEM } from "@/lib/data";
 import { Heart, ShieldCheck, Bank } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = metaFor("/donate");
+
+const FAQS = [
+  {
+    question: "How can I donate to CSN Nepal?",
+    answer:
+      "Fill in the donation form on this page, or transfer directly to CSN's official accounts: Prime Bank Ltd., Balaju Branch (A/C 00701000000089200110) or Himalayan Bank Ltd., Battar (NPR 026-05185800012). Email csnnepal@gmail.com after your transfer so CSN can issue a receipt.",
+  },
+  {
+    question: "Can I donate to CSN Nepal from outside Nepal?",
+    answer:
+      "Yes. International donors can send a bank transfer to Prime Bank Ltd., Balaju Branch, account 00701000000089200110, SWIFT code PCBLNPKA. Email csnnepal@gmail.com after the transfer so CSN can confirm receipt.",
+  },
+  {
+    question: "Is CSN Nepal a registered non-profit?",
+    answer:
+      `Yes. Co-operation Society Nepal is registered with the District Administration Office, Nuwakot (Regd. No. 401/81), affiliated with the Social Welfare Council (No. 37085) and holds ${CONTACT.pan}.`,
+  },
+  {
+    question: "How does CSN make sure donations are used properly?",
+    answer:
+      "Gifts are applied to their intended purposes. Accounts are operated by joint signatures, every transaction is approved by an authorised person, each project has separate records, and income and expenditure are audited every year by an independent authorised auditor approved by the AGM.",
+  },
+];
 
 export default function Page() {
   return (
@@ -129,6 +153,7 @@ export default function Page() {
           </p>
         </Card>
       </section>
+      <FaqSection faqs={FAQS} />
       <DonateBand />
     </>
   );
