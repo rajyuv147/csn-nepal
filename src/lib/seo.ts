@@ -26,7 +26,7 @@ export const META: Record<string, Meta> = {
   "/about/executive-board": {
     title: "Executive Board & Leadership | CSN Nepal",
     description:
-      "Meet CSN Nepal's 7-member executive board, executive director and founder board — qualifications, experience, governance and leadership responsibilities.",
+      "Meet CSN Nepal's executive board, executive director and founder board — qualifications, experience, governance and leadership responsibilities.",
   },
   "/about/advisory-board": {
     title: "Advisory Board — Experts Guiding CSN | CSN Nepal",

@@ -79,7 +79,9 @@ export const EXECUTIVE_BOARD: BoardMember[] = [
   { name: "Ramesh Pandit", role: "Chairperson", qualification: "BBS", experience: "10 years in social organisations. Child club graduate. Trainer of good governance. Teacher." },
   { name: "Nisha Tamang", role: "Vice-Chairperson", qualification: "BA", experience: "5 years in child development sector. Child club graduate." },
   { name: "Samjhana B.K.", role: "Secretary", qualification: "BBS", experience: "5 years in adolescent empowerment. Child club graduate." },
+  { name: "Sunil Adhikari", role: "Secretary", qualification: "BBS", experience: "4 years in NGO management. Child club graduate." },
   { name: "Ananta Acharya", role: "Treasurer" },
+  { name: "Anju Acharya", role: "Treasurer", qualification: "M.A. LLB", experience: "10 years in youth entrepreneurship development. Child club graduate." },
   { name: "Jayanti Adhikari", role: "Member" },
   { name: "Er. Birat Bikram Sapkota", role: "Member", qualification: "Engineer", experience: "2 years in civil engineering." },
   { name: "Dr. Rupa Khatiwada", role: "Member", qualification: "Doctor", experience: "2 years in child care, practices and public health." },
@@ -259,7 +261,7 @@ export const TARGET_GROUP =
   "Poor, deprived, Dalits, differently-abled and elderly persons, youths, women, children and other disadvantaged communities — protecting their economic, social, cultural and health rights.";
 
 export const GOVERNANCE =
-  "CSN has an inclusive 7-member executive board elected by the General Assembly through democratic practice, convened each year and chaired by the chairperson. Organisational funds are held in commercial bank accounts and audited by a Government of Nepal authorised auditor; the audit report is presented every year to local government officials, the Social Welfare Council and other stakeholders.";
+  "CSN has an inclusive executive board elected by the General Assembly through democratic practice, convened each year and chaired by the chairperson. Organisational funds are held in commercial bank accounts and audited by a Government of Nepal authorised auditor; the audit report is presented every year to local government officials, the Social Welfare Council and other stakeholders.";
 
 export const FINANCE_SYSTEM = [
   "Bank accounts at Prime Bank Ltd., Balaju (A/C 00701000000089200110) and Himalayan Bank Ltd., Battar (NPR 026-05185800012), operated by joint signatures of the Chairperson and Treasurer/Account Assistant; separate project accounts run in SBI Bank, Garima Bikash Bank (UNDP/CILRP, CSN/SCAI) and Sanima Bank (CSN/APCF).",

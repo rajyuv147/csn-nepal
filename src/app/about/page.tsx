@@ -51,7 +51,7 @@ const FAQS = [
   {
     question: "How is CSN Nepal governed?",
     answer:
-      "CSN has an inclusive 7-member executive board elected by the General Assembly through democratic practice. The board is chaired by the chairperson, funds are held in commercial bank accounts, and accounts are audited annually by a Government of Nepal authorised auditor.",
+      "CSN has an inclusive executive board elected by the General Assembly through democratic practice. The board is chaired by the chairperson, funds are held in commercial bank accounts, and accounts are audited annually by a Government of Nepal authorised auditor.",
   },
   {
     question: "What are CSN Nepal's main program areas?",
