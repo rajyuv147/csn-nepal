@@ -81,7 +81,7 @@ export const GALLERIES: GalleryAlbum[] = [
       "Bhotekoshi Flood Response training for Barefoot Counsellors at Hotel Tamang Plaza, 2–6 November 2026, supported by CRS and Caritas Nepal, including narrative therapy \"Tree of Life\" sessions.",
     publishedDate: "Nov 5, 2026",
     from: 69,
-    to: 73,
+    to: 78,
   },
 ];
 
