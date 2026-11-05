@@ -26,14 +26,18 @@ export default function Page() {
                 <div className="flex-1">
                   <p className="font-bold">{r.name}</p>
                   <p className="text-sm text-[#043d24]/60">{r.role}</p>
-                  <p className="mt-1.5 flex items-start gap-1.5 text-sm text-[#043d24]/75">
-                    <GraduationCap size={16} className="shrink-0 mt-0.5 text-[#157a48]" />
-                    <span><strong>Qualification:</strong> {r.qualification}</span>
-                  </p>
-                  <p className="mt-1 flex items-start gap-1.5 text-sm text-[#043d24]/75">
-                    <Briefcase size={16} className="shrink-0 mt-0.5 text-[#157a48]" />
-                    <span><strong>Experience:</strong> {r.experience}</span>
-                  </p>
+                  {r.qualification && (
+                    <p className="mt-1.5 flex items-start gap-1.5 text-sm text-[#043d24]/75">
+                      <GraduationCap size={16} className="shrink-0 mt-0.5 text-[#157a48]" />
+                      <span><strong>Qualification:</strong> {r.qualification}</span>
+                    </p>
+                  )}
+                  {r.experience && (
+                    <p className="mt-1 flex items-start gap-1.5 text-sm text-[#043d24]/75">
+                      <Briefcase size={16} className="shrink-0 mt-0.5 text-[#157a48]" />
+                      <span><strong>Experience:</strong> {r.experience}</span>
+                    </p>
+                  )}
                 </div>
                 <Badge>{r.role}</Badge>
               </div>
