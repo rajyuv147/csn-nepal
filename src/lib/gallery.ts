@@ -74,6 +74,15 @@ export const GALLERIES: GalleryAlbum[] = [
     from: 64,
     to: 68,
   },
+  {
+    slug: "barefoot-counsellor-training",
+    title: "Barefoot Counsellor Training",
+    detail:
+      "Bhotekoshi Flood Response training for Barefoot Counsellors at Hotel Tamang Plaza, 2–6 November 2026, supported by CRS and Caritas Nepal, including narrative therapy \"Tree of Life\" sessions.",
+    publishedDate: "Nov 5, 2026",
+    from: 69,
+    to: 73,
+  },
 ];
 
 const ADDITIONAL_GALLERY_PHOTOS: Record<number, string> = {
