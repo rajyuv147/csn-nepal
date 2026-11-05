@@ -76,9 +76,9 @@ export type BoardMember = { name: string; role: string; qualification?: string; 
 // Current executive board. Qualifications & experience come from the CSN organisational profile
 // where available; members without them show name and role only.
 export const EXECUTIVE_BOARD: BoardMember[] = [
-  { name: "Ramesh Pandit", role: "Chairperson", qualification: "BBS", experience: "10 years in social organisations. Child club graduate. Trainer of good governance. Teacher." },
+  { name: "Ramesh Pandit", role: "Chairperson", qualification: "BBS", experience: "15 years in social organisations. Child club graduate. Trainer of good governance. Teacher." },
   { name: "Nisha Tamang", role: "Vice-Chairperson", qualification: "BA", experience: "5 years in child development sector. Child club graduate." },
-  { name: "Samjhana B.K.", role: "Secretary", qualification: "BBS", experience: "5 years in adolescent empowerment. Child club graduate." },
+  { name: "Samjhana B.K.", role: "Secretary", qualification: "BBS", experience: "10 years in adolescent empowerment. Child club graduate." },
   { name: "Anju Acharya", role: "Treasurer", qualification: "M.A. LLB", experience: "10 years in youth entrepreneurship development. Child club graduate." },
   { name: "Jayanti Adhikari", role: "Member" },
   { name: "Er. Birat Bikram Sapkota", role: "Member", qualification: "Engineer", experience: "2 years in civil engineering." },
