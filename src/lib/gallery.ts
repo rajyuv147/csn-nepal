@@ -83,6 +83,15 @@ export const GALLERIES: GalleryAlbum[] = [
     from: 69,
     to: 78,
   },
+  {
+    slug: "winterization-support-cdrs",
+    title: "Winterization Support with CDRS",
+    detail:
+      "Winter relief kits handed over to flood-affected families under the Bhotekoshi Flood Response Project, in collaboration with CDRS and Brigade of Mercy.",
+    publishedDate: "Nov 6, 2026",
+    from: 79,
+    to: 81,
+  },
 ];
 
 const ADDITIONAL_GALLERY_PHOTOS: Record<number, string> = {
